@@ -1,0 +1,17 @@
+notests *default:
+  build:
+    target: Vostok.Hosting.Abstractions.sln
+    configuration: NoTests
+    tool:
+      name: dotnet
+
+  install:
+    - Vostok.Hosting.Abstractions/bin/Release/netstandard2.0/Vostok.Hosting.Abstractions.dll
+
+  deps:
+    - vostok.devtools
+
+full-build > notests:
+  build:
+    target: Vostok.Hosting.Abstractions.sln
+    configuration: Release
