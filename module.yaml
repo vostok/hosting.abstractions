@@ -10,6 +10,7 @@ notests *default:
 
   deps:
     - vostok.logging.abstractions
+    - vostok.hercules.client.abstractions
     - vostok.devtools
 
 full-build > notests:
