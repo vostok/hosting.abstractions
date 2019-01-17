@@ -1,5 +1,6 @@
 ﻿using JetBrains.Annotations;
 using Vostok.Logging.Abstractions;
+using Vostok.Hercules.Client.Abstractions;
 
 namespace Vostok.Hosting.Abstractions
 {
@@ -14,5 +15,11 @@ namespace Vostok.Hosting.Abstractions
         /// </summary>
         [NotNull]
         ILog Log { get; }
+        
+        /// <summary>
+        /// A Hercules client instance to be used for all hercules events from inside the hosted application.
+        /// </summary>
+        [NotNull]
+        IHerculesSink HerculesSink { get; }
     }
 }
