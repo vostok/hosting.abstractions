@@ -1,4 +1,5 @@
 ﻿using JetBrains.Annotations;
+using Vostok.Configuration.Abstractions;
 using Vostok.Logging.Abstractions;
 using Vostok.Hercules.Client.Abstractions;
 
@@ -21,5 +22,17 @@ namespace Vostok.Hosting.Abstractions
         /// </summary>
         [NotNull]
         IHerculesSink HerculesSink { get; }
+        
+        /// <summary>
+        /// An IConfigurationProvider instance to obtain settings inside the hosted application.
+        /// </summary>
+        [NotNull]
+        IConfigurationProvider ConfigurationProvider { get; }
+        
+        /// <summary>
+        /// An IConfigurationSource instance which provides hosted application configuration in the form of raw settings trees.
+        /// </summary>
+        [NotNull]
+        IConfigurationSource ConfigurationSource { get; }
     }
 }
