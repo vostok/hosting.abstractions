@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System.Threading;
+using JetBrains.Annotations;
 using Vostok.Configuration.Abstractions;
 using Vostok.Logging.Abstractions;
 using Vostok.Hercules.Client.Abstractions;
@@ -34,5 +35,7 @@ namespace Vostok.Hosting.Abstractions
         /// </summary>
         [NotNull]
         IConfigurationSource ConfigurationSource { get; }
+
+        CancellationToken ShutdownToken { get; }
     }
 }
