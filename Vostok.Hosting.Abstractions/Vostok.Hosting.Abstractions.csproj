@@ -18,6 +18,7 @@
     <PackageProjectUrl>https://github.com/vostok/hosting.abstractions</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/vostok/hosting.abstractions/blob/master/LICENSE</PackageLicenseUrl>
     <PackageTags>vostok vostok.hosting</PackageTags>
+    <PackageReleaseNotes>https://github.com/vostok/hosting.abstractions/blob/master/CHANGELOG.md</PackageReleaseNotes>
     <RepositoryUrl>https://github.com/vostok/hosting.abstractions</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
