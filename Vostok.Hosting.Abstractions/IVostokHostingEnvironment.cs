@@ -1,8 +1,9 @@
 ﻿using System.Threading;
 using JetBrains.Annotations;
 using Vostok.Configuration.Abstractions;
-using Vostok.Logging.Abstractions;
+using Vostok.Context;
 using Vostok.Hercules.Client.Abstractions;
+using Vostok.Logging.Abstractions;
 
 namespace Vostok.Hosting.Abstractions
 {
@@ -54,5 +55,23 @@ namespace Vostok.Hosting.Abstractions
         /// </summary>
         [NotNull]
         IHerculesSink HerculesSink { get; }
+
+        /// <summary>
+        /// Mutable type-based ambient context properties.
+        /// </summary>
+        [NotNull]
+        IContextGlobals ContextGlobals { get; }
+
+        /// <summary>
+        /// Mutable name-based ambient context properties.
+        /// </summary>
+        [NotNull]
+        IContextProperties ContextProperties { get; }
+        
+        /// <summary>
+        /// Ambient context configuration.
+        /// </summary>
+        [NotNull]
+        IContextConfiguration ContextConfiguration { get; }
     }
 }
