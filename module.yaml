@@ -9,6 +9,7 @@ notests *default:
     - Vostok.Hosting.Abstractions/bin/Release/netstandard2.0/Vostok.Hosting.Abstractions.dll
 
   deps:
+    - vostok.tracing.abstractions
     - vostok.context
     - vostok.configuration.abstractions
     - vostok.logging.abstractions
