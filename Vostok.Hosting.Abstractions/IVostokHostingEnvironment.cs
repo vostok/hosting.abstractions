@@ -4,6 +4,7 @@ using Vostok.Configuration.Abstractions;
 using Vostok.Context;
 using Vostok.Hercules.Client.Abstractions;
 using Vostok.Logging.Abstractions;
+using Vostok.Tracing.Abstractions;
 
 namespace Vostok.Hosting.Abstractions
 {
@@ -37,6 +38,19 @@ namespace Vostok.Hosting.Abstractions
         ILog Log { get; }
 
         /// <summary>
+        /// <para>A tracer instance used to instrument the application with distributed tracing.</para>
+        /// <para>It typically comes set up to send produced spans to Hercules with <see cref="HerculesSink"/>.</para>
+        /// </summary>
+        [NotNull]
+        ITracer Tracer { get; }
+
+        /// <summary>
+        /// An instance of Hercules client that can be used to send arbitrary user-defined events to Hercules.
+        /// </summary>
+        [NotNull]
+        IHerculesSink HerculesSink { get; }
+
+        /// <summary>
         /// <para>A source of raw configuration parameters provided by the host system.</para>
         /// <para>Use it in conjunction with <see cref="ConfigurationProvider"/>.</para>
         /// </summary>
@@ -49,12 +63,6 @@ namespace Vostok.Hosting.Abstractions
         /// </summary>
         [NotNull]
         IConfigurationProvider ConfigurationProvider { get; }
-
-        /// <summary>
-        /// An instance of Hercules client that can be used to send arbitrary user-defined events to Hercules.
-        /// </summary>
-        [NotNull]
-        IHerculesSink HerculesSink { get; }
 
         /// <summary>
         /// Mutable type-based ambient context properties.
