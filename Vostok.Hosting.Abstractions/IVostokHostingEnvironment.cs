@@ -22,36 +22,37 @@ namespace Vostok.Hosting.Abstractions
         CancellationToken ShutdownToken { get; }
 
         /// <summary>
-        /// <para>Identity is a set of properties that allow to uniquely identify an instance of the application.</para>
+        /// <para>A set of properties that allow to uniquely identify an instance of the application.</para>
         /// <para>See <see cref="IVostokApplicationIdentity.Project"/>, <see cref="IVostokApplicationIdentity.Environment"/> and <see cref="IVostokApplicationIdentity.Instance"/> for more details.</para>
         /// </summary>
         [NotNull]
         IVostokApplicationIdentity ApplicationIdentity { get; }
 
-
         /// <summary>
-        /// A log instance to be used for all logging from inside the hosted application.
+        /// <para>A log instance to be used for all logging from inside the hosted application.</para>
+        /// <para>It typically comes set up to write logs to both local files and Hercules.</para>
         /// </summary>
         [NotNull]
         ILog Log { get; }
-        
+
         /// <summary>
-        /// A Hercules client instance to be used for all hercules events from inside the hosted application.
-        /// </summary>
-        [NotNull]
-        IHerculesSink HerculesSink { get; }
-        
-        /// <summary>
-        /// An IConfigurationProvider instance to obtain settings inside the hosted application.
-        /// </summary>
-        [NotNull]
-        IConfigurationProvider ConfigurationProvider { get; }
-        
-        /// <summary>
-        /// An IConfigurationSource instance which provides hosted application configuration in the form of raw settings trees.
+        /// <para>A source of raw configuration parameters provided by the host system.</para>
+        /// <para>Use it in conjunction with <see cref="ConfigurationProvider"/>.</para>
         /// </summary>
         [NotNull]
         IConfigurationSource ConfigurationSource { get; }
 
+        /// <summary>
+        /// <para>A configuration provider preconfigured by the host system.</para>
+        /// <para>Use it to obtain settings from built-in <see cref="ConfigurationSource"/> or custom <see cref="IConfigurationSource"/>s.</para>
+        /// </summary>
+        [NotNull]
+        IConfigurationProvider ConfigurationProvider { get; }
+
+        /// <summary>
+        /// An instance of Hercules client that can be used to send arbitrary user-defined events to Hercules.
+        /// </summary>
+        [NotNull]
+        IHerculesSink HerculesSink { get; }
     }
 }
