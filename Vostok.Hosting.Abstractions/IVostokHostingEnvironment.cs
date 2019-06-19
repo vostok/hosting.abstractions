@@ -31,6 +31,13 @@ namespace Vostok.Hosting.Abstractions
         IVostokApplicationIdentity ApplicationIdentity { get; }
 
         /// <summary>
+        /// <para>A set of scoped metric contexts corresponding to different levels of <see cref="ApplicationIdentity"/>.</para>
+        /// <para>See <see cref="IVostokApplicationMetrics.Project"/>, <see cref="IVostokApplicationMetrics.Environment"/>, <see cref="IVostokApplicationMetrics.Application"/>  and <see cref="IVostokApplicationMetrics.Instance"/> for more details.</para>
+        /// </summary>
+        [NotNull]
+        IVostokApplicationMetrics Metrics { get; }
+
+        /// <summary>
         /// <para>A log instance to be used for all logging from inside the hosted application.</para>
         /// <para>It typically comes set up to write logs to both local files and Hercules.</para>
         /// </summary>
@@ -75,7 +82,7 @@ namespace Vostok.Hosting.Abstractions
         /// </summary>
         [NotNull]
         IContextProperties ContextProperties { get; }
-        
+
         /// <summary>
         /// Ambient context configuration.
         /// </summary>
