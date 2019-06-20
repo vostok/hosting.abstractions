@@ -112,5 +112,11 @@ namespace Vostok.Hosting.Abstractions
         /// </summary>
         [NotNull]
         ClusterClientSetup ClusterClientSetup { get; }
+
+        /// <summary>
+        /// An extension point for arbitrary services provided by the host.
+        /// </summary>
+        [NotNull]
+        IVostokHostExtensions HostExtensions { get; }
     }
 }
