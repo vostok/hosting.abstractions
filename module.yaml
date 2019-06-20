@@ -16,6 +16,8 @@ notests *default:
     - vostok.tracing.abstractions
     - vostok.configuration.abstractions
     - vostok.hercules.client.abstractions
+    - vostok.servicediscovery.abstractions
+    - vostok.clusterclient.core
 
 full-build > notests:
   build:
