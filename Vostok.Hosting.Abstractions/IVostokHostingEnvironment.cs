@@ -1,9 +1,11 @@
 ﻿using System.Threading;
 using JetBrains.Annotations;
+using Vostok.Clusterclient.Core;
 using Vostok.Configuration.Abstractions;
 using Vostok.Context;
 using Vostok.Hercules.Client.Abstractions;
 using Vostok.Logging.Abstractions;
+using Vostok.ServiceDiscovery.Abstractions;
 using Vostok.Tracing.Abstractions;
 
 namespace Vostok.Hosting.Abstractions
@@ -72,6 +74,21 @@ namespace Vostok.Hosting.Abstractions
         IConfigurationProvider ConfigurationProvider { get; }
 
         /// <summary>
+        /// <para>A server-side service discovery tool used to add register/unregister application replica in common registry.</para>
+        /// <para>This <see cref="IServiceBeacon"/> instance is typically manipulated by the host and does not require manual handling.</para>
+        /// <para>See <see cref="IServiceBeacon"/> for more details.</para>
+        /// </summary>
+        [NotNull]
+        IServiceBeacon ServiceBeacon { get; }
+
+        /// <summary>
+        /// <para>A client-side service discovery provider required for inter-service communication.</para>
+        /// <para>See <see cref="IServiceLocator.Locate"/> for more details.</para>
+        /// </summary>
+        [NotNull]
+        IServiceLocator ServiceLocator { get; }
+
+        /// <summary>
         /// Mutable type-based ambient context properties.
         /// </summary>
         [NotNull]
@@ -88,5 +105,12 @@ namespace Vostok.Hosting.Abstractions
         /// </summary>
         [NotNull]
         IContextConfiguration ContextConfiguration { get; }
+
+        /// <summary>
+        /// <para>A preconfigured delegate that adds tracing, ambient context support, etc.</para>
+        /// <para>Can be used to enrich any configurable external client with these capabilities.</para>
+        /// </summary>
+        [NotNull]
+        ClusterClientSetup ClusterClientSetup { get; }
     }
 }
