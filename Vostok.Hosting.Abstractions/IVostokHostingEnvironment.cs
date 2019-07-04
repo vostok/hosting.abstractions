@@ -12,6 +12,20 @@ namespace Vostok.Hosting.Abstractions
     public interface IVostokHostingEnvironment
     {
         /// <summary>
+        /// <para>A set of properties that allow to uniquely identify an instance of the application.</para>
+        /// <para>See <see cref="IVostokApplicationIdentity.Project"/>, <see cref="IVostokApplicationIdentity.Environment"/> and <see cref="IVostokApplicationIdentity.Instance"/> for more details.</para>
+        /// </summary>
+        [NotNull]
+        IVostokApplicationIdentity ApplicationIdentity { get; }
+
+        /// <summary>
+        /// <para>A set of scoped metric contexts corresponding to different levels of <see cref="ApplicationIdentity"/>.</para>
+        /// <para>See <see cref="IVostokApplicationMetrics.Project"/>, <see cref="IVostokApplicationMetrics.Environment"/>, <see cref="IVostokApplicationMetrics.Application"/>  and <see cref="IVostokApplicationMetrics.Instance"/> for more details.</para>
+        /// </summary>
+        [NotNull]
+        IVostokApplicationMetrics Metrics { get; }
+
+        /// <summary>
         /// A log instance to be used for all logging from inside the hosted application.
         /// </summary>
         [NotNull]
