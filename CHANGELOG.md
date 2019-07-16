@@ -1,3 +1,7 @@
+## 0.1.3 (16-07-2019):
+
+Added IVostokApplicationIdentity and IVostokApplicationMetrics.
+
 ## 0.1.2 (26-03-2019): 
 
 Added IConfigurationProvider and IConfigurationSource to IVostokHostingEnvironment.
