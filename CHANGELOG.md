@@ -1,4 +1,4 @@
-## 0.1.3 (16-07-2019):
+## 0.1.4 (16-07-2019):
 
 Added IVostokApplicationIdentity and IVostokApplicationMetrics.
 
