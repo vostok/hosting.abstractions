@@ -1,7 +1,8 @@
 ﻿using JetBrains.Annotations;
 using Vostok.Configuration.Abstractions;
-using Vostok.Logging.Abstractions;
 using Vostok.Hercules.Client.Abstractions;
+using Vostok.Logging.Abstractions;
+using Vostok.Tracing.Abstractions;
 
 namespace Vostok.Hosting.Abstractions
 {
@@ -30,19 +31,25 @@ namespace Vostok.Hosting.Abstractions
         /// </summary>
         [NotNull]
         ILog Log { get; }
-        
+
         /// <summary>
         /// A Hercules client instance to be used for all hercules events from inside the hosted application.
         /// </summary>
         [NotNull]
         IHerculesSink HerculesSink { get; }
-        
+
+        /// <summary>
+        /// A tracer instance to be used for all tracing from inside the hosted application.
+        /// </summary>
+        [NotNull]
+        ITracer Tracer { get; }
+
         /// <summary>
         /// An IConfigurationProvider instance to obtain settings inside the hosted application.
         /// </summary>
         [NotNull]
         IConfigurationProvider ConfigurationProvider { get; }
-        
+
         /// <summary>
         /// An IConfigurationSource instance which provides hosted application configuration in the form of raw settings trees.
         /// </summary>
