@@ -39,7 +39,8 @@ namespace Vostok.Hosting.Abstractions
         IHerculesSink HerculesSink { get; }
 
         /// <summary>
-        /// A tracer instance to be used for all tracing from inside the hosted application.
+        /// <para>A tracer instance used to instrument the application with distributed tracing.</para>
+        /// <para>It typically comes set up to send produced spans to Hercules with <see cref="HerculesSink"/>.</para>
         /// </summary>
         [NotNull]
         ITracer Tracer { get; }
