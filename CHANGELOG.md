@@ -1,3 +1,7 @@
+## 0.1.5 (04-09-2019):
+
+Added ITracer.
+
 ## 0.1.4 (16-07-2019):
 
 Added IVostokApplicationIdentity and IVostokApplicationMetrics.
