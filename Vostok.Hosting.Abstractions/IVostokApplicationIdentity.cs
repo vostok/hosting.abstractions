@@ -13,17 +13,24 @@ namespace Vostok.Hosting.Abstractions
         string Project { get; }
 
         /// <summary>
+        /// <para>Optional name of the subproject the application belongs to.</para>
+        /// <para>Each project can be divided into several groups.</para>
+        /// </summary>
+        [CanBeNull]
+        string Subproject { get; }
+
+        /// <summary>
         /// <para>Name of the environment the application is currently deployed in.</para>
         /// <para>Every environment belongs to a single project, but a project may contain multiple environments.</para>
         /// <para><c>dev</c>, <c>staging</c> and <c>prod</c> are notable examples of environments used to implement release lifecycle.</para>
-        /// <para>Unique within corresponding <see cref="Project"/>.</para>
+        /// <para>Unique within corresponding <see cref="Project"/>/<see cref="Subproject"/> pair.</para>
         /// </summary>
         [NotNull]
         string Environment { get; }
 
         /// <summary>
         /// <para>Name of the application itself.</para>
-        /// <para>Unique within corresponding <see cref="Project"/>.</para>
+        /// <para>Unique within corresponding  <see cref="Project"/>/<see cref="Subproject"/> pair.</para>
         /// </summary>
         [NotNull]
         string Application { get; }
