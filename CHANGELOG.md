@@ -1,3 +1,7 @@
+## 0.1.6 (11-09-2019):
+
+Added Subproject to IVostokApplicationIdentity.
+
 ## 0.1.5 (04-09-2019):
 
 Added ITracer.
