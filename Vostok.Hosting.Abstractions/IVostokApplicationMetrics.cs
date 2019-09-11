@@ -25,6 +25,17 @@ namespace Vostok.Hosting.Abstractions
         /// <para>A metric context preconfigured with tags from following <see cref="IVostokHostingEnvironment.ApplicationIdentity"/> properties (listed in order):</para>
         /// <list type="bullet">
         ///     <item><description><see cref="IVostokApplicationIdentity.Project"/></description></item>
+        ///     <item><description><see cref="IVostokApplicationIdentity.Subproject"/> (if specified)</description></item>
+        /// </list>
+        /// </summary>
+        [NotNull]
+        IMetricContext Subproject { get; }
+
+        /// <summary>
+        /// <para>A metric context preconfigured with tags from following <see cref="IVostokHostingEnvironment.ApplicationIdentity"/> properties (listed in order):</para>
+        /// <list type="bullet">
+        ///     <item><description><see cref="IVostokApplicationIdentity.Project"/></description></item>
+        ///     <item><description><see cref="IVostokApplicationIdentity.Subproject"/> (if specified)</description></item>
         ///     <item><description><see cref="IVostokApplicationIdentity.Environment"/></description></item>
         /// </list>
         /// </summary>
@@ -35,6 +46,7 @@ namespace Vostok.Hosting.Abstractions
         /// <para>A metric context preconfigured with tags from following <see cref="IVostokHostingEnvironment.ApplicationIdentity"/> properties (listed in order):</para>
         /// <list type="bullet">
         ///     <item><description><see cref="IVostokApplicationIdentity.Project"/></description></item>
+        ///     <item><description><see cref="IVostokApplicationIdentity.Subproject"/> (if specified)</description></item>
         ///     <item><description><see cref="IVostokApplicationIdentity.Environment"/></description></item>
         ///     <item><description><see cref="IVostokApplicationIdentity.Application"/></description></item>
         /// </list>
@@ -46,6 +58,7 @@ namespace Vostok.Hosting.Abstractions
         /// <para>A metric context preconfigured with tags from following <see cref="IVostokHostingEnvironment.ApplicationIdentity"/> properties (listed in order):</para>
         /// <list type="bullet">
         ///     <item><description><see cref="IVostokApplicationIdentity.Project"/></description></item>
+        ///     <item><description><see cref="IVostokApplicationIdentity.Subproject"/> (if specified)</description></item>
         ///     <item><description><see cref="IVostokApplicationIdentity.Environment"/></description></item>
         ///     <item><description><see cref="IVostokApplicationIdentity.Application"/></description></item>
         ///     <item><description><see cref="IVostokApplicationIdentity.Instance"/></description></item>
