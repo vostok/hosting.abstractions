@@ -1,4 +1,6 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace Vostok.Hosting.Abstractions
 {
@@ -28,5 +30,10 @@ namespace Vostok.Hosting.Abstractions
         /// <para>Returns <c>false</c> if no extension of given type is registered with given key.</para>
         /// </summary>
         bool TryGet<TExtension>([NotNull] string key, out TExtension result);
+        
+        /// <summary>
+        /// Returns all types, registered without key.
+        /// </summary>
+        IEnumerable<(Type, object)> GetAllTypes();
     }
 }
