@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using JetBrains.Annotations;
 using Vostok.Clusterclient.Core;
+using Vostok.ClusterConfig.Client.Abstractions;
 using Vostok.Configuration.Abstractions;
 using Vostok.Context;
 using Vostok.Hercules.Client.Abstractions;
@@ -72,6 +73,13 @@ namespace Vostok.Hosting.Abstractions
         /// </summary>
         [NotNull]
         IConfigurationProvider ConfigurationProvider { get; }
+
+        /// <summary>
+        /// <para>Client for ClusterConfig service used to obtain application settings.</para>
+        /// <para>Use it in conjunction with <see cref="ConfigurationProvider"/> and <see cref="IConfigurationSource"/>.</para>
+        /// </summary>
+        [NotNull]
+        IClusterConfigClient ClusterConfigClient { get; }
 
         /// <summary>
         /// <para>A server-side service discovery tool used to add register/unregister application replica in common registry.</para>
