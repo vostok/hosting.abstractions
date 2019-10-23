@@ -3,6 +3,7 @@ using Vostok.Metrics;
 
 namespace Vostok.Hosting.Abstractions
 {
+    /// <inheritdoc cref="IVostokHostingEnvironment.Metrics"/>
     [PublicAPI]
     public interface IVostokApplicationMetrics
     {
