@@ -8,12 +8,14 @@ namespace Vostok.Hosting.Abstractions
     {
         /// <summary>
         /// <para>Zero-based index of application instance.</para>
+        /// <para>This property may be updated during the application lifecycle.</para>
         /// </summary>
-        int ReplicaIndex { get; }
+        int InstanceIndex { get; }
 
         /// <summary>
         /// <para>Total number of application instances.</para>
+        /// <para>This property may be updated during the application lifecycle.</para>
         /// </summary>
-        int ReplicasCount { get; }
+        int InstancesCount { get; }
     }
 }
