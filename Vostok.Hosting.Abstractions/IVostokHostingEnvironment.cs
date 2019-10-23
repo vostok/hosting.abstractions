@@ -34,6 +34,18 @@ namespace Vostok.Hosting.Abstractions
         IVostokApplicationIdentity ApplicationIdentity { get; }
 
         /// <summary>
+        /// <para>A set of properties that denotes application cpu and memory usage limits.</para>
+        /// </summary>
+        [NotNull]
+        IVostokApplicationLimits ApplicationLimits { get; }
+
+        /// <summary>
+        /// <para>A set of properties that denotes application replication factor and index of current instance.</para>
+        /// </summary>
+        [NotNull]
+        IVostokApplicationReplicationInfo ApplicationReplicationInfo { get; }
+
+        /// <summary>
         /// <para>A set of scoped metric contexts corresponding to different levels of <see cref="ApplicationIdentity"/>.</para>
         /// <para>See <see cref="IVostokApplicationMetrics.Project"/>, <see cref="IVostokApplicationMetrics.Subproject"/>, <see cref="IVostokApplicationMetrics.Environment"/>, <see cref="IVostokApplicationMetrics.Application"/>  and <see cref="IVostokApplicationMetrics.Instance"/> for more details.</para>
         /// </summary>

@@ -2,6 +2,7 @@
 
 namespace Vostok.Hosting.Abstractions
 {
+    /// <inheritdoc cref="IVostokHostingEnvironment.ApplicationIdentity"/>
     [PublicAPI]
     public interface IVostokApplicationIdentity
     {
