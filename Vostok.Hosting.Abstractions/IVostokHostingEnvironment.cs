@@ -41,6 +41,7 @@ namespace Vostok.Hosting.Abstractions
 
         /// <summary>
         /// <para>A set of properties that denotes application replication factor and index of current instance.</para>
+        /// <para>If replication has been changed, new instance will be returned.</para>
         /// </summary>
         [NotNull]
         IVostokApplicationReplicationInfo ApplicationReplicationInfo { get; }
