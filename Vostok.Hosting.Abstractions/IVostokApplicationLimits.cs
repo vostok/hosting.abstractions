@@ -9,15 +9,15 @@ namespace Vostok.Hosting.Abstractions
         /// <summary>
         /// <para>Number of maximum allowed cpu usage in cpu units.</para>
         /// <para>One unit is equivalent to 1 cpu core.</para>
-        /// <para>Fractional requests are allowed.</para>
-        /// <para>The <c>null</c> value denotes no limit.</para>
+        /// <para>Fractional values are allowed.</para>
+        /// <para>A <c>null</c> value denotes no limit.</para>
         /// <para>If limit has been changed, new value will be returned.</para>
         /// </summary>
         float? CpuUnits { get; }
 
         /// <summary>
         /// <para>Number of maximum allowed memory usage in bytes.</para>
-        /// <para>The <c>null</c> value denotes no limit.</para>
+        /// <para>A <c>null</c> value denotes no limit.</para>
         /// <para>If limit has been changed, new value will be returned.</para>
         /// </summary>
         long? MemoryBytes { get; }
