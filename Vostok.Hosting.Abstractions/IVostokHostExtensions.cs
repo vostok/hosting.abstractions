@@ -4,6 +4,7 @@ using JetBrains.Annotations;
 
 namespace Vostok.Hosting.Abstractions
 {
+    /// <inheritdoc cref="IVostokHostingEnvironment.HostExtensions"/>
     [PublicAPI]
     public interface IVostokHostExtensions
     {

@@ -2,7 +2,6 @@
 
 namespace Vostok.Hosting.Abstractions
 {
-    /// <inheritdoc cref="IVostokHostingEnvironment.HostExtensions"/>
     [PublicAPI]
     public static class IVostokApplicationExtensions
     {
