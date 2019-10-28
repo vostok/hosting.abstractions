@@ -16,6 +16,7 @@ notests *default:
     - module vostok.servicediscovery.abstractions
     - module vostok.clusterclient.core
     - module vostok.clusterconfig.client.abstractions
+    - module vostok.datacenters
 
   deps:
     - vostok.devtools
@@ -28,6 +29,7 @@ notests *default:
     - vostok.servicediscovery.abstractions
     - vostok.clusterclient.core
     - vostok.clusterconfig.client.abstractions
+    - vostok.datacenters
 
 full-build > notests:
   build:

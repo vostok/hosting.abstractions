@@ -4,6 +4,7 @@ using Vostok.Clusterclient.Core;
 using Vostok.ClusterConfig.Client.Abstractions;
 using Vostok.Configuration.Abstractions;
 using Vostok.Context;
+using Vostok.Datacenters;
 using Vostok.Hercules.Client.Abstractions;
 using Vostok.Logging.Abstractions;
 using Vostok.ServiceDiscovery.Abstractions;
@@ -133,6 +134,12 @@ namespace Vostok.Hosting.Abstractions
         /// </summary>
         [NotNull]
         ClusterClientSetup ClusterClientSetup { get; }
+
+        /// <summary>
+        /// An utility for working with datacenters related stuff.
+        /// </summary>
+        [NotNull]
+        IDatacenters Datacenters { get; }
 
         /// <summary>
         /// An extension point for arbitrary services provided by the host.
