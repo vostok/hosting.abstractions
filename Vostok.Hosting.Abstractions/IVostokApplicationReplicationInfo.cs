@@ -2,7 +2,7 @@
 
 namespace Vostok.Hosting.Abstractions
 {
-    /// <see cref="IVostokHostingEnvironment.ApplicationReplicationInfo"/>
+    /// <inheritdoc cref="IVostokHostingEnvironment.ApplicationReplicationInfo"/>
     [PublicAPI]
     public interface IVostokApplicationReplicationInfo
     {
