@@ -136,7 +136,7 @@ namespace Vostok.Hosting.Abstractions
         ClusterClientSetup ClusterClientSetup { get; }
 
         /// <summary>
-        /// An utility for working with datacenters related stuff.
+        /// A helper assisting in mapping machine names and addresses to datacenters.
         /// </summary>
         [NotNull]
         IDatacenters Datacenters { get; }
