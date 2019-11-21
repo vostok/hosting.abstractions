@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using JetBrains.Annotations;
 
 namespace Vostok.Hosting.Abstractions
@@ -14,6 +15,8 @@ namespace Vostok.Hosting.Abstractions
     [PublicAPI]
     public interface IVostokApplication
     {
+        IReadOnlyList<IVostokApplicationRequirement> Requirements { get; }
+
         /// <summary>
         /// <para>Performs any initialization or warm-up required for successful startup.</para>
         /// <para>It is assumed that the application is ready to run after returning control from this method.</para>
