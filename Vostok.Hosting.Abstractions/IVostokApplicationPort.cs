@@ -3,8 +3,8 @@
 namespace Vostok.Hosting.Abstractions
 {
     [PublicAPI]
-    public class VostokApplicationPortRequirement : IVostokApplicationRequirement
+    public class IVostokApplicationPort
     {
-
+        public int Port { get; }
     }
 }
