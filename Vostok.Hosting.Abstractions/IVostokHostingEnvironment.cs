@@ -6,6 +6,7 @@ using Vostok.Configuration.Abstractions;
 using Vostok.Context;
 using Vostok.Datacenters;
 using Vostok.Hercules.Client.Abstractions;
+using Vostok.Hosting.Abstractions.Requirements;
 using Vostok.Logging.Abstractions;
 using Vostok.ServiceDiscovery.Abstractions;
 using Vostok.Tracing.Abstractions;
@@ -102,6 +103,13 @@ namespace Vostok.Hosting.Abstractions
         /// </summary>
         [NotNull]
         IServiceBeacon ServiceBeacon { get; }
+
+        /// <summary>
+        /// <para>A port provided by host.</para>
+        /// <para>Mark <see cref="IVostokApplication"/> with <see cref="VostokHostPortRequiredAttribute"/> if you need it.</para>
+        /// </summary>
+        [CanBeNull]
+        int? Port { get; }
 
         /// <summary>
         /// <para>A client-side service discovery provider required for inter-service communication.</para>
