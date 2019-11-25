@@ -83,6 +83,13 @@ namespace Vostok.Hosting.Abstractions
         IConfigurationSource ConfigurationSource { get; }
 
         /// <summary>
+        /// <para>A source of raw configuration parameters provided by the host system.</para>
+        /// <para>Use it in conjunction with <see cref="ConfigurationProvider"/>.</para>
+        /// </summary>
+        [NotNull]
+        IConfigurationSource SecretConfigurationSource { get; }
+
+        /// <summary>
         /// <para>A configuration provider preconfigured by the host system.</para>
         /// <para>Use it to obtain settings from built-in <see cref="ConfigurationSource"/> or custom <see cref="IConfigurationSource"/>s.</para>
         /// </summary>
@@ -106,7 +113,7 @@ namespace Vostok.Hosting.Abstractions
 
         /// <summary>
         /// <para>A port provided by host.</para>
-        /// <para>Mark <see cref="IVostokApplication"/> with <see cref="VostokHostPortRequiredAttribute"/> if you need it.</para>
+        /// <para>Mark <see cref="IVostokApplication"/> with <see cref="RequiresPortAttribute"/> if you need it.</para>
         /// </summary>
         [CanBeNull]
         int? Port { get; }
