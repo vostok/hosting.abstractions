@@ -10,9 +10,14 @@ namespace Vostok.Hosting.Abstractions.Requirements
     [AttributeUsage(AttributeTargets.Class)]
     public class RequiresConfiguration : Attribute
     {
-        public Type Type;
+        public readonly Type Type;
 
-        public RequiresConfiguration(Type type) =>
-            Type = type;
+        public readonly string Scope;
+
+        public RequiresConfiguration([NotNull] Type type, [CanBeNull] string scope = null)
+        {
+            Type = type ?? throw new ArgumentNullException(nameof(type));
+            Scope = scope;
+        }
     }
 }

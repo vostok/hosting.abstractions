@@ -10,9 +10,9 @@ namespace Vostok.Hosting.Abstractions.Requirements
     [AttributeUsage(AttributeTargets.Class)]
     public class RequiresHostExtensionAttribute : Attribute
     {
-        public Type Type;
+        public readonly Type Type;
 
-        public RequiresHostExtensionAttribute(Type type) =>
-            Type = type;
+        public RequiresHostExtensionAttribute([NotNull] Type type) =>
+            Type = type ?? throw new ArgumentNullException(nameof(type));
     }
 }
