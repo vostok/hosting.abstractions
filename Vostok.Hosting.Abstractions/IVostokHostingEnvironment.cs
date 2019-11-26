@@ -83,7 +83,7 @@ namespace Vostok.Hosting.Abstractions
         IConfigurationSource ConfigurationSource { get; }
 
         /// <summary>
-        /// <para>A source of raw configuration parameters provided by the host system.</para>
+        /// <para>A source of raw secret configuration parameters provided by the host system.</para>
         /// <para>Use it in conjunction with <see cref="ConfigurationProvider"/>.</para>
         /// </summary>
         [NotNull]
