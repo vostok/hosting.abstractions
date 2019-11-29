@@ -113,7 +113,7 @@ namespace Vostok.Hosting.Abstractions
 
         /// <summary>
         /// <para>A port provided by host.</para>
-        /// <para>Mark <see cref="IVostokApplication"/> with <see cref="RequiresPortAttribute"/> if you need it.</para>
+        /// <para>Mark <see cref="IVostokApplication"/> with <see cref="RequiresPort"/> if you need it.</para>
         /// </summary>
         [CanBeNull]
         int? Port { get; }

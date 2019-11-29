@@ -8,7 +8,7 @@ namespace Vostok.Hosting.Abstractions.Requirements
     /// </summary>
     [PublicAPI]
     [AttributeUsage(AttributeTargets.Class)]
-    public class RequiresPortAttribute : Attribute
+    public class RequiresPort : Attribute
     {
 
     }
