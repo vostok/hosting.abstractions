@@ -114,6 +114,7 @@ namespace Vostok.Hosting.Abstractions
         /// <summary>
         /// <para>A port provided by host.</para>
         /// <para>Mark <see cref="IVostokApplication"/> with <see cref="RequiresPort"/> if you need it.</para>
+        /// <para>Same value will be used in <see cref="ServiceBeacon"/>.</para>
         /// </summary>
         [CanBeNull]
         int? Port { get; }

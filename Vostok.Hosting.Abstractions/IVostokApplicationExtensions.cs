@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using JetBrains.Annotations;
 using Vostok.Hosting.Abstractions.Requirements;
@@ -30,14 +31,6 @@ namespace Vostok.Hosting.Abstractions
         {
             application.Initialize(environment);
             application.Run(environment);
-        }
-
-        /// <summary>
-        /// Returns whether is port required for the given <paramref name="vostokApplication"/>.
-        /// </summary>
-        public static bool IsPortRequired([NotNull] this IVostokApplication vostokApplication)
-        {
-            return vostokApplication.GetType().GetCustomAttribute<RequiresPort>(true) != null;
         }
     }
 }
