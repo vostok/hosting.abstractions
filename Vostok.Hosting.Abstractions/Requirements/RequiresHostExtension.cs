@@ -7,7 +7,7 @@ namespace Vostok.Hosting.Abstractions.Requirements
     /// Denotes that application requires the host to register an extension of type <see cref="Type"/> in <see cref="IVostokHostingEnvironment.HostExtensions"/>.
     /// </summary>
     [PublicAPI]
-    [AttributeUsage(AttributeTargets.Class)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface)]
     public class RequiresHostExtension : Attribute
     {
         public readonly Type Type;
