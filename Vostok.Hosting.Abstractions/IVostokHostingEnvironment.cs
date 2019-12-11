@@ -1,6 +1,5 @@
 ﻿using System.Threading;
 using JetBrains.Annotations;
-using Vostok.Clusterclient.Core;
 using Vostok.ClusterConfig.Client.Abstractions;
 using Vostok.Configuration.Abstractions;
 using Vostok.Context;
@@ -143,13 +142,6 @@ namespace Vostok.Hosting.Abstractions
         /// </summary>
         [NotNull]
         IContextConfiguration ContextConfiguration { get; }
-
-        /// <summary>
-        /// <para>A preconfigured delegate that adds tracing, ambient context support, etc.</para>
-        /// <para>Can be used to enrich any configurable external client with these capabilities.</para>
-        /// </summary>
-        [NotNull]
-        ClusterClientSetup ClusterClientSetup { get; }
 
         /// <summary>
         /// A helper assisting in mapping machine names and addresses to datacenters.

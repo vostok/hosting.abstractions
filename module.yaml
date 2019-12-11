@@ -14,7 +14,6 @@ notests *default:
     - module vostok.configuration.abstractions
     - module vostok.hercules.client.abstractions
     - module vostok.servicediscovery.abstractions
-    - module vostok.clusterclient.core
     - module vostok.clusterconfig.client.abstractions
     - module vostok.datacenters
 
@@ -27,7 +26,6 @@ notests *default:
     - vostok.configuration.abstractions
     - vostok.hercules.client.abstractions
     - vostok.servicediscovery.abstractions
-    - vostok.clusterclient.core
     - vostok.clusterconfig.client.abstractions
     - vostok.datacenters
 
