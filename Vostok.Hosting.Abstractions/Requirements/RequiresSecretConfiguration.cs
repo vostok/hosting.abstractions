@@ -4,7 +4,8 @@ using JetBrains.Annotations;
 namespace Vostok.Hosting.Abstractions.Requirements
 {
     /// <summary>
-    /// Denotes, that host must setup <see cref="IVostokHostingEnvironment.SecretConfigurationSource"/> for <see cref="Type"/> type into <see cref="IVostokHostingEnvironment.ConfigurationProvider"/>.
+    /// <para>Denotes that host must set up <see cref="IVostokHostingEnvironment.SecretConfigurationSource"/> for settings of type <see cref="Type"/> in <see cref="IVostokHostingEnvironment.ConfigurationProvider"/>.</para>
+    /// <para>Optionally, <see cref="IVostokHostingEnvironment.SecretConfigurationSource"/> can also be scoped into given <see cref="Scope"/>.</para>
     /// </summary>
     [PublicAPI]
     [AttributeUsage(AttributeTargets.Class)]
