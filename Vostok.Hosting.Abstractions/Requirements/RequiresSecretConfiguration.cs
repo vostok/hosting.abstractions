@@ -8,7 +8,7 @@ namespace Vostok.Hosting.Abstractions.Requirements
     /// <para>Optionally, <see cref="IVostokHostingEnvironment.SecretConfigurationSource"/> can also be scoped into given <see cref="Scope"/>.</para>
     /// </summary>
     [PublicAPI]
-    [AttributeUsage(AttributeTargets.Class)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface)]
     public class RequiresSecretConfiguration : Attribute
     {
         public readonly Type Type;

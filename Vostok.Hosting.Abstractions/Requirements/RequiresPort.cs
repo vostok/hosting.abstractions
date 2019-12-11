@@ -7,7 +7,7 @@ namespace Vostok.Hosting.Abstractions.Requirements
     /// Denotes that host must provide a <see cref="IVostokHostingEnvironment.Port"/> to the application.
     /// </summary>
     [PublicAPI]
-    [AttributeUsage(AttributeTargets.Class)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface)]
     public class RequiresPort : Attribute
     {
 
