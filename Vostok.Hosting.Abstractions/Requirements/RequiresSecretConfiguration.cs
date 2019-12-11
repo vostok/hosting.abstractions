@@ -11,11 +11,13 @@ namespace Vostok.Hosting.Abstractions.Requirements
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface)]
     public class RequiresSecretConfiguration : Attribute
     {
+        [NotNull]
         public readonly Type Type;
 
+        [NotNull]
         public readonly string[] Scope;
 
-        public RequiresSecretConfiguration([NotNull] Type type, params string[] scope)
+        public RequiresSecretConfiguration([NotNull] Type type, [NotNull] params string[] scope)
         {
             Type = type ?? throw new ArgumentNullException(nameof(type));
             Scope = scope ?? throw new ArgumentNullException(nameof(scope));
