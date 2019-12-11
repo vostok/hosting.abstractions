@@ -13,12 +13,12 @@ namespace Vostok.Hosting.Abstractions.Requirements
     {
         public readonly Type Type;
 
-        public readonly string Scope;
+        public readonly string[] Scope;
 
-        public RequiresConfiguration([NotNull] Type type, [CanBeNull] string scope = null)
+        public RequiresConfiguration([NotNull] Type type, params string[] scope)
         {
             Type = type ?? throw new ArgumentNullException(nameof(type));
-            Scope = scope;
+            Scope = scope ?? throw new ArgumentNullException(nameof(scope));
         }
     }
 }
