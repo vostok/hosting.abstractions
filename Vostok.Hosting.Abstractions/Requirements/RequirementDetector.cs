@@ -15,14 +15,14 @@ namespace Vostok.Hosting.Abstractions.Requirements
         public static bool RequiresPort(Type applicationType)
             => GetAttributes<RequiresPort>(applicationType).Any();
 
-        public static IEnumerable<Type> GetRequiredHostExtensions(Type applicationType)
-            => GetAttributes<RequiresHostExtension>(applicationType).Select(req => req.Type);
+        public static IEnumerable<RequiresHostExtension> GetRequiredHostExtensions(Type applicationType)
+            => GetAttributes<RequiresHostExtension>(applicationType);
 
-        public static IEnumerable<(Type type, string[] scope)> GetRequiredConfigurations(Type applicationType)
-            => GetAttributes<RequiresConfiguration>(applicationType).Select(req => (req.Type, req.Scope));
+        public static IEnumerable<RequiresConfiguration> GetRequiredConfigurations(Type applicationType)
+            => GetAttributes<RequiresConfiguration>(applicationType);
 
-        public static IEnumerable<(Type type, string[] scope)> GetRequiredSecretConfigurations(Type applicationType)
-            => GetAttributes<RequiresSecretConfiguration>(applicationType).Select(req => (req.Type, req.Scope));
+        public static IEnumerable<RequiresSecretConfiguration> GetRequiredSecretConfigurations(Type applicationType)
+            => GetAttributes<RequiresSecretConfiguration>(applicationType);
 
         private static IEnumerable<TAttribute> GetAttributes<TAttribute>(Type applicationType)
             where TAttribute : Attribute => applicationType.GetCustomAttributes<TAttribute>(true);
