@@ -25,6 +25,6 @@ namespace Vostok.Hosting.Abstractions.Requirements
             => GetAttributes<RequiresSecretConfiguration>(applicationType);
 
         private static IEnumerable<TAttribute> GetAttributes<TAttribute>(Type applicationType)
-            where TAttribute : Attribute => applicationType.GetCustomAttributes<TAttribute>(true);
+            where TAttribute : Attribute => applicationType?.GetCustomAttributes<TAttribute>(true) ?? Enumerable.Empty<TAttribute>();
     }
 }
