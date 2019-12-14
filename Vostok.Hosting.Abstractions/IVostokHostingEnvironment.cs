@@ -77,9 +77,18 @@ namespace Vostok.Hosting.Abstractions
         /// <summary>
         /// <para>A source of raw configuration parameters provided by the host system.</para>
         /// <para>Use it in conjunction with <see cref="ConfigurationProvider"/>.</para>
+        /// <para>When working with secret settings, use <see cref="SecretConfigurationSource"/> instead.</para>
         /// </summary>
         [NotNull]
         IConfigurationSource ConfigurationSource { get; }
+
+        /// <summary>
+        /// <para>A configuration provider preconfigured by the host system.</para>
+        /// <para>Use it to obtain settings from built-in <see cref="ConfigurationSource"/> or custom <see cref="IConfigurationSource"/>s.</para>
+        /// <para>When working with secret settings, use <see cref="SecretConfigurationProvider"/> instead.</para>
+        /// </summary>
+        [NotNull]
+        IConfigurationProvider ConfigurationProvider { get; }
 
         /// <summary>
         /// <para>A source of raw secret configuration parameters provided by the host system.</para>
@@ -89,11 +98,11 @@ namespace Vostok.Hosting.Abstractions
         IConfigurationSource SecretConfigurationSource { get; }
 
         /// <summary>
-        /// <para>A configuration provider preconfigured by the host system.</para>
-        /// <para>Use it to obtain settings from built-in <see cref="ConfigurationSource"/> or custom <see cref="IConfigurationSource"/>s.</para>
+        /// <para>A configuration provider for secret settings preconfigured by the host system.</para>
+        /// <para>Use it to obtain settings from built-in <see cref="SecretConfigurationSource"/> or custom secret <see cref="IConfigurationSource"/>s.</para>
         /// </summary>
         [NotNull]
-        IConfigurationProvider ConfigurationProvider { get; }
+        IConfigurationProvider SecretConfigurationProvider { get; }
 
         /// <summary>
         /// <para>Client for ClusterConfig service used to obtain application settings.</para>
