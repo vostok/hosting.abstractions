@@ -7,27 +7,27 @@ notests *default:
 
   install:
     - Vostok.Hosting.Abstractions/bin/Release/netstandard2.0/Vostok.Hosting.Abstractions.dll
-    - module vostok.context
-    - module vostok.metrics
-    - module vostok.logging.abstractions
-    - module vostok.tracing.abstractions
-    - module vostok.configuration.abstractions
-    - module vostok.hercules.client.abstractions
-    - module vostok.servicediscovery.abstractions
     - module vostok.clusterconfig.client.abstractions
+    - module vostok.configuration.abstractions
+    - module vostok.context
     - module vostok.datacenters
+    - module vostok.hercules.client.abstractions
+    - module vostok.logging.abstractions
+    - module vostok.metrics
+    - module vostok.servicediscovery.abstractions
+    - module vostok.tracing.abstractions
 
   deps:
-    - vostok.devtools
-    - vostok.context
-    - vostok.metrics
-    - vostok.logging.abstractions
-    - vostok.tracing.abstractions
-    - vostok.configuration.abstractions
-    - vostok.hercules.client.abstractions
-    - vostok.servicediscovery.abstractions
     - vostok.clusterconfig.client.abstractions
+    - vostok.configuration.abstractions
+    - vostok.context
     - vostok.datacenters
+    - vostok.devtools
+    - vostok.hercules.client.abstractions
+    - vostok.logging.abstractions
+    - vostok.metrics
+    - vostok.servicediscovery.abstractions
+    - vostok.tracing.abstractions
 
 full-build > notests:
   build:
