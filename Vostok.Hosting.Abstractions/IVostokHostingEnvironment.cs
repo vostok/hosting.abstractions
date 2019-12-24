@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using JetBrains.Annotations;
 using Vostok.ClusterConfig.Client.Abstractions;
 using Vostok.Configuration.Abstractions;
@@ -23,9 +24,14 @@ namespace Vostok.Hosting.Abstractions
         /// <summary>
         /// <para>A token that can be set by the host to indicate an intentional application shutdown that is about to happen.</para>
         /// <para>Applications are expected to terminate gracefully and return from <see cref="IVostokApplication.RunAsync"/> upon receiving such notification.</para>
-        /// <para>Hosts typically have a timeout for graceful shutdown: if the application fails to stop in a reasonable amount of time, it will get terminated forcefully.</para>
+        /// <para>Hosts typically have a timeout for graceful shutdown (see <see cref="ShutdownTimeout"/>): if the application fails to stop in a reasonable amount of time, it will get terminated forcefully.</para>
         /// </summary>
         CancellationToken ShutdownToken { get; }
+
+        /// <summary>
+        /// <para>Amount of time the host will wait for the application to shut down gracefully after signaling <see cref="ShutdownToken"/>.</para>
+        /// </summary>
+        TimeSpan ShutdownTimeout { get; }
 
         /// <summary>
         /// <para>A set of properties that allow to uniquely identify an instance of the application.</para>
