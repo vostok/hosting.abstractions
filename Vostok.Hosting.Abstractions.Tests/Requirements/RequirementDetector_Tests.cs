@@ -33,6 +33,7 @@ namespace Vostok.Hosting.Abstractions.Tests.Requirements
             }
         }
 
+        // ReSharper disable once UnusedTypeParameter
         private interface IGenericInterface<T>
         {
         }
