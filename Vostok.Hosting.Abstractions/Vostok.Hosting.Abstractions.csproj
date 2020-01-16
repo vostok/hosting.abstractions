@@ -8,7 +8,7 @@
     <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
-    <VersionPrefix>0.1.7</VersionPrefix>
+    <VersionPrefix>0.2.0</VersionPrefix>
   </PropertyGroup>
   <PropertyGroup>
     <Title>Vostok.Hosting.Abstractions</Title>
@@ -34,13 +34,29 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\vostok.configuration.abstractions\Vostok.Configuration.Abstractions\bin\Release\netstandard2.0\Vostok.Configuration.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Vostok.Metrics">
+    <Reference Include="Vostok.Context">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\vostok.metrics\Vostok.Metrics\bin\Release\netstandard2.0\Vostok.Metrics.dll</HintPath>
+      <HintPath>..\..\vostok.context\Vostok.Context\bin\Release\netstandard2.0\Vostok.Context.dll</HintPath>
     </Reference>
     <Reference Include="Vostok.Tracing.Abstractions">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\vostok.tracing.abstractions\Vostok.Tracing.Abstractions\bin\Release\netstandard2.0\Vostok.Tracing.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Vostok.Metrics">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\vostok.metrics\Vostok.Metrics\bin\Release\netstandard2.0\Vostok.Metrics.dll</HintPath>
+    </Reference>
+    <Reference Include="Vostok.ServiceDiscovery.Abstractions">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\vostok.servicediscovery.abstractions\Vostok.ServiceDiscovery.Abstractions\bin\Release\netstandard2.0\Vostok.ServiceDiscovery.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Vostok.ClusterConfig.Client.Abstractions">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\vostok.clusterconfig.client.abstractions\Vostok.ClusterConfig.Client.Abstractions\bin\Release\netstandard2.0\Vostok.ClusterConfig.Client.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Vostok.Datacenters">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\vostok.datacenters\Vostok.Datacenters\bin\Release\netstandard2.0\Vostok.Datacenters.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
