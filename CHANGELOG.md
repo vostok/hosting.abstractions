@@ -1,4 +1,4 @@
-## 0.2.0 (16-10-2020):
+## 0.2.0 (16-01-2020):
 
 Added IVostokApplication and fill IVostokHostingEnvironment.
 
