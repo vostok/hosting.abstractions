@@ -10,6 +10,5 @@ namespace Vostok.Hosting.Abstractions.Requirements
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface)]
     public class RequiresPort : Attribute
     {
-
     }
 }

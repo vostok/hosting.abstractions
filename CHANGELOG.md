@@ -1,3 +1,7 @@
+## 0.2.0 (16-10-2020):
+
+Added IVostokApplication and fill IVostokHostingEnvironment.
+
 ## 0.1.5 (04-09-2019):
 
 Added ITracer.
