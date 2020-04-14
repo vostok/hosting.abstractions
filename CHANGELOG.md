@@ -1,3 +1,8 @@
+## 0.2.1 (14-04-2020):
+
+RequirementDetector now also looks into a static public property named AdditionalRequirements that returns IEnumerable<Attribute>.
+This allows to express requirements with attributes whose internal types depend on generic type parameters of the application.
+
 ## 0.2.0 (16-01-2020):
 
 Added IVostokApplication and fill IVostokHostingEnvironment.

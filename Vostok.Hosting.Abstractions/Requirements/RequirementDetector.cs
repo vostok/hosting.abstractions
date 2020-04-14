@@ -12,6 +12,8 @@ namespace Vostok.Hosting.Abstractions.Requirements
     [PublicAPI]
     public static class RequirementDetector
     {
+        private const string AdditionalRequirementsProperty = "AdditionalRequirements";
+
         public static bool RequiresPort(Type applicationType)
             => GetAttributes<RequiresPort>(applicationType).Any();
 
@@ -25,6 +27,22 @@ namespace Vostok.Hosting.Abstractions.Requirements
             => GetAttributes<RequiresSecretConfiguration>(applicationType);
 
         private static IEnumerable<TAttribute> GetAttributes<TAttribute>(Type applicationType)
-            where TAttribute : Attribute => applicationType?.GetCustomAttributes<TAttribute>(true) ?? Enumerable.Empty<TAttribute>();
+            where TAttribute : Attribute
+            => GetDirectAttributes<TAttribute>(applicationType).Concat(GetAdditionalAttributes<TAttribute>(applicationType));
+
+        private static IEnumerable<TAttribute> GetDirectAttributes<TAttribute>(Type applicationType)
+            where TAttribute : Attribute
+            => applicationType?.GetCustomAttributes<TAttribute>(true) ?? Enumerable.Empty<TAttribute>();
+
+        private static IEnumerable<TAttribute> GetAdditionalAttributes<TAttribute>(Type applicationType)
+            where TAttribute : Attribute
+        {
+            var property = applicationType.GetProperty(AdditionalRequirementsProperty, BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy,
+                null, typeof(IEnumerable<Attribute>), Array.Empty<Type>(), null);
+
+            return property == null 
+                ? Enumerable.Empty<TAttribute>() 
+                : ((IEnumerable<Attribute>)property.GetValue(null)).Where(attribute => attribute is TAttribute).Cast<TAttribute>();
+        }
     }
 }
