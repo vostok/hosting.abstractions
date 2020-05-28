@@ -30,11 +30,11 @@ namespace Vostok.Hosting.Abstractions.Composite
 
         public async Task InitializeAsync(IVostokHostingEnvironment environment)
         {
-            await PreInitializeAsync(environment).ConfigureAwait(false);
+            await PreInitializeAsync(environment);
 
             await (settings.UseParallelInitialization
                 ? ExecuteInParallel(environment, SelectInitializeMethods())
-                : ExecuteSequentially(environment, SelectInitializeMethods())).ConfigureAwait(false);
+                : ExecuteSequentially(environment, SelectInitializeMethods()));
         }
 
         public Task RunAsync(IVostokHostingEnvironment environment)
@@ -47,7 +47,7 @@ namespace Vostok.Hosting.Abstractions.Composite
         private async Task ExecuteSequentially(IVostokHostingEnvironment environment, IEnumerable<Func<IVostokHostingEnvironment, Task>> actions)
         {
             foreach (var action in actions)
-                await action(environment).ConfigureAwait(false);
+                await action(environment);
         }
 
         private async Task ExecuteInParallel(IVostokHostingEnvironment environment, IEnumerable<Func<IVostokHostingEnvironment, Task>> actions)
@@ -60,13 +60,13 @@ namespace Vostok.Hosting.Abstractions.Composite
 
             while (tasks.Any())
             {
-                var completedTask = await Task.WhenAny(tasks).ConfigureAwait(false);
+                var completedTask = await Task.WhenAny(tasks);
 
                 tasks.Remove(completedTask);
 
                 try
                 {
-                    await completedTask.ConfigureAwait(false);
+                    await completedTask;
                 }
                 catch (OperationCanceledException)
                 {
