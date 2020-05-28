@@ -10,7 +10,7 @@ namespace Vostok.Hosting.Abstractions.Requirements
     /// </summary>
     [PublicAPI]
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface, AllowMultiple = true)]
-    public class RequiresHostExtension : Attribute
+    public class RequiresHostExtension : Requirement
     {
         [NotNull]
         public readonly Type Type;
