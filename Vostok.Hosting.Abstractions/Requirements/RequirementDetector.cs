@@ -13,9 +13,6 @@ namespace Vostok.Hosting.Abstractions.Requirements
         public static bool RequiresPort([NotNull] IVostokApplication application)
             => RequirementAttributesHelper.GetAttributes<RequiresPort>(application).Any();
 
-        public static bool RequiresPort([NotNull] IVostokApplication application, out int count)
-            => (count = RequirementAttributesHelper.GetAttributes<RequiresPort>(application).Count()) > 0;
-
         [ItemNotNull]
         public static IEnumerable<RequiresHostExtension> GetRequiredHostExtensions([NotNull] IVostokApplication application)
             => RequirementAttributesHelper.GetAttributes<RequiresHostExtension>(application);

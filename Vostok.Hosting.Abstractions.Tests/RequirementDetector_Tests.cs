@@ -82,16 +82,6 @@ namespace Vostok.Hosting.Abstractions.Tests
             extensions[3].Type.Should().Be(typeof(int));
         }
 
-        [Test]
-        public void Should_detect_multiple_port_requirements()
-        {
-            var application = new MultiApplication();
-
-            RequirementDetector.RequiresPort(application, out var count).Should().BeTrue();
-
-            count.Should().Be(3);
-        }
-
         [RequiresPort]
         private class ApplicationBase : EmptyApplication
         {
