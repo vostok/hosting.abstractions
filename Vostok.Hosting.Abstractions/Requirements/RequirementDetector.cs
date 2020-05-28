@@ -1,48 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using JetBrains.Annotations;
 
 namespace Vostok.Hosting.Abstractions.Requirements
 {
     /// <summary>
-    /// Provides helper methods to detect attribute-based requirements on application types, such as <see cref="RequiresConfiguration"/> or <see cref="RequiresHostExtension"/>.
+    /// Provides helper methods to detect application requirements, such as <see cref="RequiresConfiguration"/> or <see cref="RequiresHostExtension"/>.
     /// </summary>
     [PublicAPI]
     public static class RequirementDetector
     {
-        private const string AdditionalRequirementsProperty = "AdditionalRequirements";
+        public static bool RequiresPort([NotNull] IVostokApplication application)
+            => RequirementAttributesHelper.GetAttributes<RequiresPort>(application).Any();
 
-        public static bool RequiresPort(Type applicationType)
-            => GetAttributes<RequiresPort>(applicationType).Any();
+        public static bool RequiresPort([NotNull] IVostokApplication application, out int count)
+            => (count = RequirementAttributesHelper.GetAttributes<RequiresPort>(application).Count()) > 0;
 
-        public static IEnumerable<RequiresHostExtension> GetRequiredHostExtensions(Type applicationType)
-            => GetAttributes<RequiresHostExtension>(applicationType);
+        [ItemNotNull]
+        public static IEnumerable<RequiresHostExtension> GetRequiredHostExtensions([NotNull] IVostokApplication application)
+            => RequirementAttributesHelper.GetAttributes<RequiresHostExtension>(application);
 
-        public static IEnumerable<RequiresConfiguration> GetRequiredConfigurations(Type applicationType)
-            => GetAttributes<RequiresConfiguration>(applicationType);
+        [ItemNotNull]
+        public static IEnumerable<RequiresConfiguration> GetRequiredConfigurations([NotNull] IVostokApplication application)
+            => RequirementAttributesHelper.GetAttributes<RequiresConfiguration>(application);
 
-        public static IEnumerable<RequiresSecretConfiguration> GetRequiredSecretConfigurations(Type applicationType)
-            => GetAttributes<RequiresSecretConfiguration>(applicationType);
-
-        private static IEnumerable<TAttribute> GetAttributes<TAttribute>(Type applicationType)
-            where TAttribute : Attribute
-            => GetDirectAttributes<TAttribute>(applicationType).Concat(GetAdditionalAttributes<TAttribute>(applicationType));
-
-        private static IEnumerable<TAttribute> GetDirectAttributes<TAttribute>(Type applicationType)
-            where TAttribute : Attribute
-            => applicationType?.GetCustomAttributes<TAttribute>(true) ?? Enumerable.Empty<TAttribute>();
-
-        private static IEnumerable<TAttribute> GetAdditionalAttributes<TAttribute>(Type applicationType)
-            where TAttribute : Attribute
-        {
-            var property = applicationType.GetProperty(AdditionalRequirementsProperty, BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy,
-                null, typeof(IEnumerable<Attribute>), Array.Empty<Type>(), null);
-
-            return property == null 
-                ? Enumerable.Empty<TAttribute>() 
-                : ((IEnumerable<Attribute>)property.GetValue(null)).Where(attribute => attribute is TAttribute).Cast<TAttribute>();
-        }
+        [ItemNotNull]
+        public static IEnumerable<RequiresSecretConfiguration> GetRequiredSecretConfigurations([NotNull] IVostokApplication application)
+            => RequirementAttributesHelper.GetAttributes<RequiresSecretConfiguration>(application);
     }
 }
