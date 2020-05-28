@@ -21,12 +21,23 @@ namespace Vostok.Hosting.Abstractions.Composite
         public CompositeApplication([NotNull] Action<ICompositeApplicationBuilder> configure)
             => (applications, settings) = CompositeApplicationBuilder.Build(configure);
 
-        public virtual Task InitializeAsync(IVostokHostingEnvironment environment) 
-            => settings.UseParallelInitialization
-                ? ExecuteInParallel(environment, SelectInitializeMethods())
-                : ExecuteSequentially(environment, SelectInitializeMethods());
+        /// <summary>
+        /// <para>Override this method to perform initialization before subapplications get initialized.</para>
+        /// <para>For instance, it's a suitable place to set up a shared DI container and save it in given <paramref name="environment"/>'s <see cref="IVostokHostingEnvironment.HostExtensions"/> for subapplications to fetch later.</para>
+        /// </summary>
+        public virtual Task PreInitializeAsync(IVostokHostingEnvironment environment)
+            => Task.CompletedTask;
 
-        public virtual Task RunAsync(IVostokHostingEnvironment environment)
+        public async Task InitializeAsync(IVostokHostingEnvironment environment)
+        {
+            await PreInitializeAsync(environment).ConfigureAwait(false);
+
+            await (settings.UseParallelInitialization
+                ? ExecuteInParallel(environment, SelectInitializeMethods())
+                : ExecuteSequentially(environment, SelectInitializeMethods())).ConfigureAwait(false);
+        }
+
+        public Task RunAsync(IVostokHostingEnvironment environment)
             => settings.UseParallelExecution
                 ? ExecuteInParallel(environment, SelectRunMethods())
                 : ExecuteSequentially(environment, SelectRunMethods());
