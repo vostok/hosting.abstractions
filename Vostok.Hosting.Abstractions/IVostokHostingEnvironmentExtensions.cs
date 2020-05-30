@@ -17,12 +17,18 @@ namespace Vostok.Hosting.Abstractions
     {
         [NotNull]
         public static IVostokHostingEnvironment WithAdditionalShutdownToken(
-            [NotNull] this IVostokHostingEnvironment environment,
-            out CancellationTokenSource source)
+            [NotNull] this IVostokHostingEnvironment environment, out CancellationTokenSource source)
         {
             source = new CancellationTokenSource();
 
-            var linkedSource = CancellationTokenSource.CreateLinkedTokenSource(environment.ShutdownToken, source.Token);
+            return WithAdditionalShutdownToken(environment, source.Token);
+        }
+
+        [NotNull]
+        public static IVostokHostingEnvironment WithAdditionalShutdownToken(
+            [NotNull] this IVostokHostingEnvironment environment, CancellationToken token)
+        {
+            var linkedSource = CancellationTokenSource.CreateLinkedTokenSource(environment.ShutdownToken, token);
             var linkedToken = linkedSource.Token;
 
             return new EnvironmentWithOverrides(environment)
