@@ -18,11 +18,7 @@ namespace Vostok.Hosting.Abstractions
         [NotNull]
         public static IVostokHostingEnvironment WithAdditionalShutdownToken(
             [NotNull] this IVostokHostingEnvironment environment, out CancellationTokenSource source)
-        {
-            source = new CancellationTokenSource();
-
-            return WithAdditionalShutdownToken(environment, source.Token);
-        }
+            => WithAdditionalShutdownToken(environment, (source = new CancellationTokenSource()).Token);
 
         [NotNull]
         public static IVostokHostingEnvironment WithAdditionalShutdownToken(
