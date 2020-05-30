@@ -10,9 +10,10 @@ using Vostok.Logging.Abstractions;
 using Vostok.ServiceDiscovery.Abstractions;
 using Vostok.Tracing.Abstractions;
 
-namespace Vostok.Hosting.Abstractions.Helpers
+namespace Vostok.Hosting.Abstractions
 {
-    internal static class IVostokHostingEnvironmentExtensions
+    [PublicAPI]
+    public static class IVostokHostingEnvironmentExtensions
     {
         [NotNull]
         public static IVostokHostingEnvironment WithAdditionalShutdownToken(
