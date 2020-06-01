@@ -27,6 +27,8 @@ namespace Vostok.Hosting.Abstractions.Diagnostics
         [NotNull]
         public string Name { get; }
 
+        public override string ToString() => $"{Component}/{Name}";
+
         #region Equality members
 
         protected bool Equals(DiagnosticEntry other) =>
