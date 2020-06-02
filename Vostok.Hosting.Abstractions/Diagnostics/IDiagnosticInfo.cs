@@ -14,7 +14,7 @@ namespace Vostok.Hosting.Abstractions.Diagnostics
         /// <para>Dispose of the returned result to cancel the registration and remove the provider from use.</para>
         /// </summary>
         [NotNull]
-        IDisposable RegisterProvider([NotNull] DiagnosticEntry entry, [NotNull] Func<object> provider);
+        IDisposable RegisterProvider([NotNull] DiagnosticEntry entry, [NotNull] IDiagnosticInfoProvider provider);
 
         /// <summary>
         /// Returns the entries of all registered info providers.
