@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using JetBrains.Annotations;
 
 namespace Vostok.Hosting.Abstractions.Diagnostics
@@ -9,9 +8,14 @@ namespace Vostok.Hosting.Abstractions.Diagnostics
     public interface IHealthTracker
     {
         /// <summary>
-        /// Returns current application health status.
+        /// Returns current application health status. May serve cached information.
         /// </summary>
         HealthStatus CurrentStatus { get; }
+
+        /// <summary>
+        /// Returns current application health report. May serve cached information.
+        /// </summary>
+        HealthReport CurrentReport { get; }
 
         /// <summary>
         /// Returns an observable that produces a new element each time <see cref="CurrentStatus"/> changes.
@@ -19,7 +23,15 @@ namespace Vostok.Hosting.Abstractions.Diagnostics
         [NotNull]
         IObservable<HealthStatus> ObserveStatus();
 
-        /// <inheritdoc cref="ObserveStatus"/>
+        /// <summary>
+        /// Returns an observable that produces a new element each time a <see cref="HealthReport"/> is produced.
+        /// </summary>
+        [NotNull]
+        IObservable<HealthReport> ObserveReports();
+
+        /// <summary>
+        /// Returns an observable that produces a new element each time <see cref="CurrentStatus"/> changes.
+        /// </summary>
         [NotNull]
         IObservable<(HealthStatus previous, HealthStatus current)> ObserveStatusChanges();
 
@@ -30,13 +42,5 @@ namespace Vostok.Hosting.Abstractions.Diagnostics
         /// </summary>
         [NotNull]
         IDisposable RegisterCheck([NotNull] string name, [NotNull] IHealthCheck check);
-
-        /// <summary>
-        /// <para>Returns a detailed report of application health based on all registered checks.</para>
-        /// <para>Triggers a synchronous round of checks if <paramref name="forceChecks"/> is <c>true</c>.</para>
-        /// <para>May serve cached information if <paramref name="forceChecks"/> is <c>false</c>.</para>
-        /// </summary>
-        [NotNull]
-        Task<HealthReport> ObtainReportAsync(bool forceChecks);
     }
 }
