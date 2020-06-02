@@ -11,7 +11,7 @@ namespace Vostok.Hosting.Abstractions.Diagnostics
         Healthy,
         
         /// <summary>
-        /// Application is able to perform its core functions, albeit with degraded quality.
+        /// Application is able to perform its core functions, albeit with potentially degraded quality.
         /// </summary>
         Degraded,
         
