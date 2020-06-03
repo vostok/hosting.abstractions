@@ -29,11 +29,30 @@ namespace Vostok.Hosting.Abstractions.Diagnostics
 
         public override string ToString() => $"{Component}/{Name}";
 
+        #region Parsing
+
+        public static bool TryParse(string input, out DiagnosticEntry entry)
+        {
+            entry = null;
+
+            if (string.IsNullOrWhiteSpace(input))
+                return false;
+
+            var parts = input.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length != 2)
+                return false;
+
+            entry = new DiagnosticEntry(parts[0], parts[1]);
+            return true;
+        } 
+
+        #endregion
+
         #region Equality members
 
         protected bool Equals(DiagnosticEntry other) =>
-           string.Equals(Component, other.Component, StringComparison.OrdinalIgnoreCase) &&
-           string.Equals(Name, other.Name, StringComparison.OrdinalIgnoreCase);
+            string.Equals(Component, other.Component, StringComparison.OrdinalIgnoreCase) &&
+            string.Equals(Name, other.Name, StringComparison.OrdinalIgnoreCase);
 
         public override bool Equals(object obj)
         {
@@ -52,7 +71,7 @@ namespace Vostok.Hosting.Abstractions.Diagnostics
             {
                 return (StringComparer.OrdinalIgnoreCase.GetHashCode(Component) * 397) ^ StringComparer.OrdinalIgnoreCase.GetHashCode(Name);
             }
-        } 
+        }
 
         #endregion
     }
