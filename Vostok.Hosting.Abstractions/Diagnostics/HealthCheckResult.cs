@@ -6,7 +6,7 @@ namespace Vostok.Hosting.Abstractions.Diagnostics
     [PublicAPI]
     public class HealthCheckResult
     {
-        private HealthCheckResult(HealthStatus status, [CanBeNull] string reason)
+        public HealthCheckResult(HealthStatus status, [CanBeNull] string reason)
         {
             Status = status;
             Reason = reason;
