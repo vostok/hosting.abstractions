@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using JetBrains.Annotations;
 
 namespace Vostok.Hosting.Abstractions.Diagnostics
 {
     /// <inheritdoc cref="IVostokApplicationDiagnostics.HealthTracker"/>
     [PublicAPI]
-    public interface IHealthTracker
+    public interface IHealthTracker : IEnumerable<(string name, IHealthCheck check)>
     {
         /// <summary>
         /// Returns current application health status. May serve cached information.
