@@ -11,9 +11,11 @@ namespace Vostok.Hosting.Abstractions.Diagnostics
     [PublicAPI]
     public class HealthReport
     {
-        public HealthReport(HealthStatus status, [NotNull] IReadOnlyDictionary<string, HealthCheckResult> checks)
+        public HealthReport(HealthStatus status, TimeSpan duration, DateTimeOffset timestamp, [NotNull] IReadOnlyDictionary<string, HealthCheckResult> checks)
         {
             Status = status;
+            Duration = duration;
+            Timestamp = timestamp;
             Checks = checks ?? throw new ArgumentNullException(nameof(checks));
         }
 
@@ -23,13 +25,23 @@ namespace Vostok.Hosting.Abstractions.Diagnostics
         public HealthStatus Status { get; }
 
         /// <summary>
+        /// Duration of all the checks combined.
+        /// </summary>
+        public TimeSpan Duration { get; }
+
+        /// <summary>
+        /// Timestamp of the check completion.
+        /// </summary>
+        public DateTimeOffset Timestamp { get; }
+
+        /// <summary>
         /// Breakdown of recent health check results.
         /// </summary>
         [NotNull]
         public IReadOnlyDictionary<string, HealthCheckResult> Checks { get; }
 
         /// <summary>
-        /// Returns all reported reasons for statuses other than <see cref="HealthStatus.Healthy"/>.
+        /// All reported reasons for statuses other than <see cref="HealthStatus.Healthy"/>.
         /// </summary>
         [NotNull]
         public IEnumerable<string> Problems => Checks.Values
