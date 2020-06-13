@@ -23,12 +23,6 @@ namespace Vostok.Hosting.Abstractions.Diagnostics
         IReadOnlyList<DiagnosticEntry> ListAll();
 
         /// <summary>
-        /// Queries all registered info providers and returns results keyed by their entries.
-        /// </summary>
-        [NotNull]
-        IReadOnlyDictionary<DiagnosticEntry, object> QueryAll();
-
-        /// <summary>
         /// Queries the info provider registered under given <paramref name="entry"/>.
         /// </summary>
         bool TryQuery([NotNull] DiagnosticEntry entry, out object info);
