@@ -12,7 +12,7 @@ namespace Vostok.Hosting.Abstractions.Composite
     /// <para>Its main use case is to simplify development of apps that consist of several loosely coupled components (such as HTTP API + periodical background jobs).</para>
     /// </summary>
     [PublicAPI]
-    public class CompositeApplication : IVostokApplication
+    public class CompositeApplication : IVostokApplication, IDisposable
     {
         private readonly IReadOnlyList<IVostokApplication> applications;
         private readonly CompositeApplicationSettings settings;
@@ -40,6 +40,11 @@ namespace Vostok.Hosting.Abstractions.Composite
             => settings.UseParallelExecution
                 ? ExecuteInParallel(environment, SelectRunMethods())
                 : ExecuteSequentially(environment, SelectRunMethods());
+
+        public virtual void Dispose()
+            => Task.WhenAll(applications.OfType<IDisposable>().Select(app => Task.Run(() => app.Dispose())))
+                .GetAwaiter()
+                .GetResult();
 
         internal IEnumerable<Type> ApplicationTypes => applications.Select(app => app.GetType());
 
