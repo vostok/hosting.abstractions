@@ -25,6 +25,16 @@ namespace Vostok.Hosting.Abstractions.Requirements
                 throw new RequirementsCheckException(application.GetType(), errors);
         }
 
+        /// <inheritdoc cref="Check(IVostokApplication,IVostokHostingEnvironment)"/>
+        [Obsolete("This method was deprecated with addition of CompositeApplication. Please use the overload with IVostokApplication instead.")]
+        public static void Check(
+            [NotNull] Type applicationType,
+            [NotNull] IVostokHostingEnvironment environment)
+        {
+            if (!TryCheck(applicationType, environment, out var errors))
+                throw new RequirementsCheckException(applicationType, errors);
+        }
+
         /// <summary>
         /// Checks whether given <paramref name="environment"/> satisfies all requirements imposed by <paramref name="application"/>.
         /// </summary>
@@ -43,29 +53,73 @@ namespace Vostok.Hosting.Abstractions.Requirements
             errors = new List<string>();
 
             CheckPort(application, environment, errors);
-            CheckHostingExtensions(application, environment, errors);
+            CheckHostExtensions(application, environment, errors);
             CheckConfigurationTypes(application, environment, errors);
 
             return errors.Count == 0;
         }
 
-        private static void CheckPort(IVostokApplication application, IVostokHostingEnvironment environment, List<string> errors)
+        /// <inheritdoc cref="TryCheck(IVostokApplication,IVostokHostingEnvironment,out List{string})"/>
+        [Obsolete("This method was deprecated with addition of CompositeApplication. Please use the overload with IVostokApplication instead.")]
+        public static bool TryCheck(
+            [NotNull] Type applicationType,
+            [NotNull] IVostokHostingEnvironment environment,
+            [NotNull] out List<string> errors)
         {
-            if (RequirementDetector.RequiresPort(application) && environment.Port == null)
-                errors.Add("Application requires a port, which is not provided by host (see 'SetPort' extension when configuring hosting environment).");
+            if (applicationType == null)
+                throw new ArgumentNullException(nameof(applicationType));
+
+            if (environment == null)
+                throw new ArgumentNullException(nameof(environment));
+
+            errors = new List<string>();
+
+            CheckPort(applicationType, environment, errors);
+            CheckHostExtensions(applicationType, environment, errors);
+            CheckConfigurationTypes(applicationType, environment, errors);
+
+            return errors.Count == 0;
         }
 
-        private static void CheckHostingExtensions(IVostokApplication application, IVostokHostingEnvironment environment, List<string> errors)
+        #region CheckPort
+        private static void CheckPort(Type applicationType, IVostokHostingEnvironment environment, List<string> errors)
+            => CheckPortInternal(() => RequirementDetector.RequiresPort(applicationType), environment, errors);
+
+        private static void CheckPort(IVostokApplication application, IVostokHostingEnvironment environment, List<string> errors)
+            => CheckPortInternal(() => RequirementDetector.RequiresPort(application), environment, errors);
+
+        private static void CheckPortInternal(
+            Func<bool> requiresPort,
+            IVostokHostingEnvironment environment,
+            List<string> errors)
+        {
+            if (requiresPort() && environment.Port == null)
+                errors.Add("Application requires a port, which is not provided by host (see 'SetPort' extension when configuring hosting environment).");
+        } 
+        #endregion
+
+        #region CheckHostExtensions
+
+        private static void CheckHostExtensions(Type applicationType, IVostokHostingEnvironment environment, List<string> errors)
+            => CheckHostExtensionsInternal(() => RequirementDetector.GetRequiredHostExtensions(applicationType), environment, errors);
+
+        private static void CheckHostExtensions(IVostokApplication application, IVostokHostingEnvironment environment, List<string> errors)
+            => CheckHostExtensionsInternal(() => RequirementDetector.GetRequiredHostExtensions(application), environment, errors);
+
+        private static void CheckHostExtensionsInternal(
+            Func<IEnumerable<RequiresHostExtension>> getRequiredHostExtensions,
+            IVostokHostingEnvironment environment,
+            List<string> errors)
         {
             var registeredExtensions = new HashSet<Type>(environment.HostExtensions.GetAll().Select(ext => ext.Item1));
 
-            foreach (var requiredExtension in RequirementDetector.GetRequiredHostExtensions(application).Where(h => h.Key == null))
+            foreach (var requiredExtension in getRequiredHostExtensions().Where(h => h.Key == null))
             {
                 if (!registeredExtensions.Contains(requiredExtension.Type))
                     errors.Add($"Application requires a host extension of type '{requiredExtension.Type}', which is not registered by host (see IVostokHostingEnvironmentBuilder.SetupHostExtensions).");
             }
 
-            foreach (var requiredExtension in RequirementDetector.GetRequiredHostExtensions(application).Where(h => h.Key != null))
+            foreach (var requiredExtension in getRequiredHostExtensions().Where(h => h.Key != null))
             {
                 try
                 {
@@ -76,16 +130,36 @@ namespace Vostok.Hosting.Abstractions.Requirements
                     errors.Add($"Application requires a host extension of type '{requiredExtension.Type}' with key '{requiredExtension.Key}', which is not registered by host (see IVostokHostingEnvironmentBuilder.SetupHostExtensions).");
                 }
             }
-        }
+        } 
+
+        #endregion
+
+        #region CheckConfigurationTypes
+
+        private static void CheckConfigurationTypes(Type applicationType, IVostokHostingEnvironment environment, List<string> errors)
+           => CheckConfigurationTypesInternal(
+               () => RequirementDetector.GetRequiredConfigurations(applicationType),
+               () => RequirementDetector.GetRequiredSecretConfigurations(applicationType),
+               environment,
+               errors);
 
         private static void CheckConfigurationTypes(IVostokApplication application, IVostokHostingEnvironment environment, List<string> errors)
+            => CheckConfigurationTypesInternal(
+                () => RequirementDetector.GetRequiredConfigurations(application),
+                () => RequirementDetector.GetRequiredSecretConfigurations(application),
+                environment,
+                errors);
+
+        private static void CheckConfigurationTypesInternal(
+            Func<IEnumerable<RequiresConfiguration>> getRequiredConfigurations,
+            Func<IEnumerable<RequiresSecretConfiguration>> getRequiredSecretConfigurations,
+            IVostokHostingEnvironment environment,
+            List<string> errors)
         {
-            var requiredConfigurations = RequirementDetector
-                .GetRequiredConfigurations(application)
+            var requiredConfigurations = getRequiredConfigurations()
                 .Select(requirement => requirement.Type);
 
-            var requiredSecretConfigurations = RequirementDetector
-                .GetRequiredSecretConfigurations(application)
+            var requiredSecretConfigurations = getRequiredSecretConfigurations()
                 .Select(requirement => requirement.Type);
 
             foreach (var type in requiredConfigurations)
@@ -105,6 +179,8 @@ namespace Vostok.Hosting.Abstractions.Requirements
             {
                 errors.Add(error.InnerException?.Message ?? error.Message);
             }
-        }
+        } 
+
+        #endregion
     }
 }
