@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using JetBrains.Annotations;
 
 namespace Vostok.Hosting.Abstractions.Diagnostics
@@ -43,5 +45,12 @@ namespace Vostok.Hosting.Abstractions.Diagnostics
         /// </summary>
         [NotNull]
         IDisposable RegisterCheck([NotNull] string name, [NotNull] IHealthCheck check);
+
+        /// <summary>
+        /// <para>Runs all registered health checks and returns a resulting report.</para>
+        /// <para>May happen simultaneously with background checks.</para>
+        /// </summary>
+        [ItemNotNull]
+        Task<HealthReport> RunChecksAsync(CancellationToken cancellationToken);
     }
 }
