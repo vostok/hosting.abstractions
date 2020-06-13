@@ -9,7 +9,7 @@ namespace Vostok.Hosting.Abstractions.Diagnostics
     public static class IHealthCheckExtensions
     {
         [ItemNotNull]
-        public static async Task<HealthCheckResult> CheckSafeAsync([NotNull] this IHealthCheck check, CancellationToken cancellationToken)
+        public static async Task<HealthCheckResult> CheckSafeAsync([NotNull] this IHealthCheck check, CancellationToken cancellationToken, HealthStatus statusOnException = HealthStatus.Failing)
         {
             try
             {
@@ -17,7 +17,7 @@ namespace Vostok.Hosting.Abstractions.Diagnostics
             }
             catch (Exception error)
             {
-                return HealthCheckResult.Failing($"Exception of type '{error.GetType().Name} has occurred: '{error.Message}'.");
+                return new HealthCheckResult(statusOnException, $"Exception of type '{error.GetType().Name} has occurred: '{error.Message}'.");
             }
         }
     }
