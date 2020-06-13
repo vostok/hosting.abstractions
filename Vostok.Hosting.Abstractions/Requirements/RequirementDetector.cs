@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
 
@@ -24,5 +25,21 @@ namespace Vostok.Hosting.Abstractions.Requirements
         [ItemNotNull]
         public static IEnumerable<RequiresSecretConfiguration> GetRequiredSecretConfigurations([NotNull] IVostokApplication application)
             => RequirementAttributesHelper.GetAttributes<RequiresSecretConfiguration>(application);
+
+        [Obsolete("This method was deprecated with addition of CompositeApplication. Please use the overload with IVostokApplication instead.")]
+        public static bool RequiresPort([NotNull] Type applicationType)
+            => RequirementAttributesHelper.GetAttributes<RequiresPort>(applicationType).Any();
+
+        [ItemNotNull, Obsolete("This method was deprecated with addition of CompositeApplication. Please use the overload with IVostokApplication instead.")]
+        public static IEnumerable<RequiresHostExtension> GetRequiredHostExtensions([NotNull] Type applicationType)
+            => RequirementAttributesHelper.GetAttributes<RequiresHostExtension>(applicationType);
+
+        [ItemNotNull, Obsolete("This method was deprecated with addition of CompositeApplication. Please use the overload with IVostokApplication instead.")]
+        public static IEnumerable<RequiresConfiguration> GetRequiredConfigurations([NotNull] Type applicationType)
+            => RequirementAttributesHelper.GetAttributes<RequiresConfiguration>(applicationType);
+
+        [ItemNotNull, Obsolete("This method was deprecated with addition of CompositeApplication. Please use the overload with IVostokApplication instead.")]
+        public static IEnumerable<RequiresSecretConfiguration> GetRequiredSecretConfigurations([NotNull] Type applicationType)
+            => RequirementAttributesHelper.GetAttributes<RequiresSecretConfiguration>(applicationType);
     }
 }
