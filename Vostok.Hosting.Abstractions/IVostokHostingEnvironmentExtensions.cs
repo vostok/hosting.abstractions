@@ -33,6 +33,25 @@ namespace Vostok.Hosting.Abstractions
             };
         }
 
+        [NotNull]
+        public static IVostokHostingEnvironment CustomizeLog(
+            [NotNull] this IVostokHostingEnvironment environment, 
+            [NotNull] Func<ILog, ILog> transform)
+            => new EnvironmentWithOverrides(environment) { CustomLog = transform(environment.Log) };
+
+        [NotNull]
+        public static IVostokHostingEnvironment CustomizeConfigurationSource(
+            [NotNull] this IVostokHostingEnvironment environment,
+            [NotNull] Func<IConfigurationSource, IConfigurationSource> transform)
+            => new EnvironmentWithOverrides(environment) { CustomConfigurationSource = transform(environment.ConfigurationSource) };
+
+        [NotNull]
+        public static IVostokHostingEnvironment CustomizeSecretConfigurationSource(
+            [NotNull] this IVostokHostingEnvironment environment,
+            [NotNull] Func<IConfigurationSource, IConfigurationSource> transform)
+            => new EnvironmentWithOverrides(environment) { CustomSecretConfigurationSource = transform(environment.SecretConfigurationSource) };
+
+
         private class EnvironmentWithOverrides : IVostokHostingEnvironment
         {
             private readonly IVostokHostingEnvironment environment;
@@ -42,6 +61,15 @@ namespace Vostok.Hosting.Abstractions
 
             [CanBeNull]
             public CancellationToken? CustomShutdownToken { get; set; }
+
+            [CanBeNull]
+            public ILog CustomLog { get; set; }
+
+            [CanBeNull]
+            public IConfigurationSource CustomConfigurationSource{ get; set; }
+
+            [CanBeNull]
+            public IConfigurationSource CustomSecretConfigurationSource { get; set; }
 
             public CancellationToken ShutdownToken
                 => CustomShutdownToken ?? environment.ShutdownToken;
@@ -65,7 +93,7 @@ namespace Vostok.Hosting.Abstractions
                 => environment.Diagnostics;
 
             public ILog Log
-                => environment.Log;
+                => CustomLog ?? environment.Log;
 
             public ITracer Tracer
                 => environment.Tracer;
@@ -74,13 +102,13 @@ namespace Vostok.Hosting.Abstractions
                 => environment.HerculesSink;
 
             public IConfigurationSource ConfigurationSource
-                => environment.ConfigurationSource;
+                => CustomConfigurationSource ?? environment.ConfigurationSource;
 
             public IConfigurationProvider ConfigurationProvider
                 => environment.ConfigurationProvider;
 
             public IConfigurationSource SecretConfigurationSource
-                => environment.SecretConfigurationSource;
+                => CustomSecretConfigurationSource ?? environment.SecretConfigurationSource;
 
             public IConfigurationProvider SecretConfigurationProvider
                 => environment.SecretConfigurationProvider;
