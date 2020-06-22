@@ -51,7 +51,11 @@ namespace Vostok.Hosting.Abstractions.Composite
         private async Task ExecuteSequentially(IVostokHostingEnvironment environment, IEnumerable<Func<IVostokHostingEnvironment, Task>> actions)
         {
             foreach (var action in actions)
+            {
+                environment.ShutdownToken.ThrowIfCancellationRequested();
+
                 await action(environment);
+            }
         }
 
         private async Task ExecuteInParallel(IVostokHostingEnvironment environment, IEnumerable<Func<IVostokHostingEnvironment, Task>> actions)
