@@ -9,7 +9,7 @@ namespace Vostok.Hosting.Abstractions.Requirements
     /// </summary>
     [PublicAPI]
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface, AllowMultiple = true)]
-    public class RequiresConfiguration : Requirement
+    public class RequiresConfiguration : Attribute
     {
         [NotNull]
         public readonly Type Type;

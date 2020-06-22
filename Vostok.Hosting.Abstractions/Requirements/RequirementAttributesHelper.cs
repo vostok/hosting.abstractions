@@ -9,19 +9,19 @@ namespace Vostok.Hosting.Abstractions.Requirements
     internal static class RequirementAttributesHelper
     {
         public static IEnumerable<TRequirement> GetAttributes<TRequirement>(IVostokApplication application)
-            where TRequirement : Requirement
+            where TRequirement : Attribute
             => GetApplicationTypes(application).SelectMany(GetAttributes<TRequirement>);
 
         public static IEnumerable<TRequirement> GetAttributes<TRequirement>(Type applicationType)
-            where TRequirement : Requirement
+            where TRequirement : Attribute
             => GetDirectAttributes<TRequirement>(applicationType).Concat(GetStaticAttributes<TRequirement>(applicationType));
 
         private static IEnumerable<TRequirement> GetDirectAttributes<TRequirement>(Type applicationType)
-            where TRequirement : Requirement
+            where TRequirement : Attribute
             => applicationType?.GetCustomAttributes<TRequirement>(true) ?? Enumerable.Empty<TRequirement>();
 
         private static IEnumerable<TRequirement> GetStaticAttributes<TRequirement>(Type applicationType)
-            where TRequirement : Requirement
+            where TRequirement : Attribute
         {
             var property = applicationType.GetProperty("AdditionalRequirements", BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy,
                 null, typeof(IEnumerable<Attribute>), Array.Empty<Type>(), null);
