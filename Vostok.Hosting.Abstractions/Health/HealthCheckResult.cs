@@ -1,7 +1,7 @@
 ﻿using System;
 using JetBrains.Annotations;
 
-namespace Vostok.Hosting.Abstractions.Diagnostics
+namespace Vostok.Hosting.Abstractions.Health
 {
     [PublicAPI]
     public class HealthCheckResult

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
 
-namespace Vostok.Hosting.Abstractions.Diagnostics
+namespace Vostok.Hosting.Abstractions.Health
 {
     /// <summary>
     /// <see cref="HealthReport"/> provides a detailed report of application health.
