@@ -1,5 +1,6 @@
 ﻿using JetBrains.Annotations;
 using Vostok.Hosting.Abstractions.Diagnostics;
+using Vostok.Hosting.Abstractions.Health;
 
 namespace Vostok.Hosting.Abstractions
 {
