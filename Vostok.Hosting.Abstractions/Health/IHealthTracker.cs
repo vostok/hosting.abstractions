@@ -40,7 +40,7 @@ namespace Vostok.Hosting.Abstractions.Health
 
         /// <summary>
         /// <para>Registers given info <paramref name="check"/> under given <paramref name="name"/> so that it can be queried.</para>
-        /// <para>All registered checks are quired periodically to update application health status.</para>
+        /// <para>All registered checks are queried periodically to update application health status.</para>
         /// <para>Dispose of the returned result to cancel the registration and remove the check from use.</para>
         /// </summary>
         [NotNull]
