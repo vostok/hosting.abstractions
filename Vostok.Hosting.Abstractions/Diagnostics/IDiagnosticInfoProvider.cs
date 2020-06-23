@@ -8,6 +8,6 @@ namespace Vostok.Hosting.Abstractions.Diagnostics
         /// <summary>
         /// Returns an arbitrary object that describes internal state of an application component.
         /// </summary>
-        object Query();
+        object Invoke();
     }
 }

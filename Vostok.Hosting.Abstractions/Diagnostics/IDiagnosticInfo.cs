@@ -20,11 +20,11 @@ namespace Vostok.Hosting.Abstractions.Diagnostics
         /// Returns the entries of all registered info providers.
         /// </summary>
         [NotNull]
-        IReadOnlyList<DiagnosticEntry> ListAll();
+        IReadOnlyList<DiagnosticEntry> ListEntries();
 
         /// <summary>
-        /// Queries the info provider registered under given <paramref name="entry"/>.
+        /// Invokes the info provider registered under given <paramref name="entry"/>.
         /// </summary>
-        bool TryQuery([NotNull] DiagnosticEntry entry, out object info);
+        bool TryInvoke([NotNull] DiagnosticEntry entry, out object info);
     }
 }
