@@ -15,7 +15,7 @@ namespace Vostok.Hosting.Abstractions
         IDiagnosticInfo Info { get; }
 
         /// <summary>
-        /// <see cref="IHealthTracker"/> provides a simple health check infrastucture and allows to track internal application health.
+        /// <see cref="IHealthTracker"/> provides a simple health check infrastructure and allows to track internal application health.
         /// </summary>
         [NotNull]
         IHealthTracker HealthTracker { get; }
