@@ -9,16 +9,6 @@ namespace Vostok.Hosting.Abstractions
     public interface IVostokHostExtensions
     {
         /// <summary>
-        /// Registers an extension of type <typeparamref name="TExtension"/> and given value.
-        /// </summary>
-        void Add<TExtension>(TExtension extension);
-
-        /// <summary>
-        /// Registers an extension of type <typeparamref name="TExtension"/>, given <paramref name="key"/> and given value.
-        /// </summary>
-        void Add<TExtension>([NotNull] string key, TExtension extension);
-
-        /// <summary>
         /// <para>Returns a host-provided extension of type <typeparamref name="TExtension"/>.</para>
         /// <para>Throws an exception if no extension of given type is registered.</para>
         /// </summary>
@@ -43,7 +33,7 @@ namespace Vostok.Hosting.Abstractions
         bool TryGet<TExtension>([NotNull] string key, out TExtension result);
 
         /// <summary>
-        /// Returns all types, registered without key.
+        /// Returns all types registered without key.
         /// </summary>
         IEnumerable<(Type, object)> GetAll();
     }
