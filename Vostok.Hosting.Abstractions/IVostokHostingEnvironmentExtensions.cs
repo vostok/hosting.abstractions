@@ -89,9 +89,6 @@ namespace Vostok.Hosting.Abstractions
             public IVostokApplicationMetrics Metrics
                 => environment.Metrics;
 
-            public IVostokApplicationDiagnostics Diagnostics
-                => environment.Diagnostics;
-
             public ILog Log
                 => CustomLog ?? environment.Log;
 
