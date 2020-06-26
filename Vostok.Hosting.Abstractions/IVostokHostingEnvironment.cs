@@ -61,13 +61,6 @@ namespace Vostok.Hosting.Abstractions
         IVostokApplicationMetrics Metrics { get; }
 
         /// <summary>
-        /// <para>Diagnostics component hosts arbitrary diagnostic info providers that report current application state when queried.</para>
-        /// <para>It also includes a simple healthcheck system, allowing to track application health and register custom checks.</para>
-        /// </summary>
-        [NotNull]
-        IVostokApplicationDiagnostics Diagnostics { get; }
-
-        /// <summary>
         /// <para>A log instance to be used for all logging from inside the hosted application.</para>
         /// <para>It typically comes set up to write logs to both local files and Hercules.</para>
         /// </summary>
