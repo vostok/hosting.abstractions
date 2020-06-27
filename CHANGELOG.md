@@ -1,3 +1,13 @@
+## 0.3.0 (27-06-2020):
+
+- Added CompositeApplication and CompositeApplicationBuilder to enable creation of multi-component apps;
+- RequirementDetector: switched from app types to app instances to support CompositeApplication;
+- RequirementChecker: switched from app types to app instances to support CompositeApplication;
+- Added diagnostic info provider abstraction;
+- Added diagnostic health check abstraction;
+- Host extensions can now become mutable (AsMutable extension) to enable passing of DI container in CompositeApplication;
+- Added enriching extensions for IVostokHostingEnvironment (additional shutdown tokens, log customization, etc).
+
 ## 0.2.1 (14-04-2020):
 
 RequirementDetector now also looks into a static public property named AdditionalRequirements that returns IEnumerable<Attribute>.
