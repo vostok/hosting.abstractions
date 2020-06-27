@@ -33,7 +33,7 @@ namespace Vostok.Hosting.Abstractions
         bool TryGet<TExtension>([NotNull] string key, out TExtension result);
 
         /// <summary>
-        /// Returns all types, registered without key.
+        /// Returns all types registered without key.
         /// </summary>
         IEnumerable<(Type, object)> GetAll();
     }
