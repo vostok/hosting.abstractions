@@ -1,3 +1,7 @@
+## 0.3.1 (30-09-2020):
+
+CompositeApplication: bugfix (must pass the same env with additional local shutdown token to Initialize and Run methods).
+
 ## 0.3.0 (27-06-2020):
 
 - Added CompositeApplication and CompositeApplicationBuilder to enable creation of multi-component apps;
