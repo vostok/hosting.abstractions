@@ -28,14 +28,14 @@ namespace Vostok.Hosting.Abstractions.Composite
         /// <para>Override this method to perform initialization before subapplications get initialized.</para>
         /// <para>For instance, it's a suitable place to set up a shared DI container and save it in given <paramref name="vostok"/>'s <see cref="IVostokHostingEnvironment.HostExtensions"/> for subapplications to fetch later.</para>
         /// </summary>
-        public virtual Task PreInitializeAsync(IVostokHostingEnvironment vostok)
+        public virtual Task PreInitializeAsync(IVostokHostingEnvironment externalEnvironment)
             => Task.CompletedTask;
 
-        public async Task InitializeAsync(IVostokHostingEnvironment vostok)
+        public async Task InitializeAsync(IVostokHostingEnvironment externalEnvironment)
         {
-            await PreInitializeAsync(environment);
+            environment = externalEnvironment.WithAdditionalShutdownToken(out localShutdown);
 
-            environment = vostok.WithAdditionalShutdownToken(out localShutdown);
+            await PreInitializeAsync(environment);
 
             await (settings.UseParallelInitialization
                 ? ExecuteInParallel(SelectInitializeMethods())
