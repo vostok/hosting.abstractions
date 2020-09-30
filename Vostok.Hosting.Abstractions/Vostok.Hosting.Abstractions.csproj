@@ -7,7 +7,7 @@
     <Configurations>Debug;Release</Configurations>
     <LangVersion>7.2</LangVersion>
     <VersionPrefix>0.3.1</VersionPrefix>
-    <NoWarn>618;1591</NoWarn>
+    <NoWarn>618;1591;0420</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
     <Title>Vostok.Hosting.Abstractions</Title>

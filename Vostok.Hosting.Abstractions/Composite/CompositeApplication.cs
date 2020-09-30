@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Vostok.Logging.Abstractions;
@@ -17,29 +18,34 @@ namespace Vostok.Hosting.Abstractions.Composite
         private readonly IReadOnlyList<IVostokApplication> applications;
         private readonly CompositeApplicationSettings settings;
 
+        private volatile IVostokHostingEnvironment environment;
+        private volatile CancellationTokenSource localShutdown;
+
         public CompositeApplication([NotNull] Action<ICompositeApplicationBuilder> configure)
             => (applications, settings) = CompositeApplicationBuilder.Build(configure);
 
         /// <summary>
         /// <para>Override this method to perform initialization before subapplications get initialized.</para>
-        /// <para>For instance, it's a suitable place to set up a shared DI container and save it in given <paramref name="environment"/>'s <see cref="IVostokHostingEnvironment.HostExtensions"/> for subapplications to fetch later.</para>
+        /// <para>For instance, it's a suitable place to set up a shared DI container and save it in given <paramref name="vostok"/>'s <see cref="IVostokHostingEnvironment.HostExtensions"/> for subapplications to fetch later.</para>
         /// </summary>
-        public virtual Task PreInitializeAsync(IVostokHostingEnvironment environment)
+        public virtual Task PreInitializeAsync(IVostokHostingEnvironment vostok)
             => Task.CompletedTask;
 
-        public async Task InitializeAsync(IVostokHostingEnvironment environment)
+        public async Task InitializeAsync(IVostokHostingEnvironment vostok)
         {
             await PreInitializeAsync(environment);
 
+            environment = vostok.WithAdditionalShutdownToken(out localShutdown);
+
             await (settings.UseParallelInitialization
-                ? ExecuteInParallel(environment, SelectInitializeMethods())
-                : ExecuteSequentially(environment, SelectInitializeMethods()));
+                ? ExecuteInParallel(SelectInitializeMethods())
+                : ExecuteSequentially(SelectInitializeMethods()));
         }
 
-        public Task RunAsync(IVostokHostingEnvironment environment)
+        public Task RunAsync(IVostokHostingEnvironment vostok)
             => settings.UseParallelExecution
-                ? ExecuteInParallel(environment, SelectRunMethods())
-                : ExecuteSequentially(environment, SelectRunMethods());
+                ? ExecuteInParallel(SelectRunMethods())
+                : ExecuteSequentially(SelectRunMethods());
 
         public virtual void Dispose()
             => Task.WhenAll(applications.OfType<IDisposable>().Select(app => Task.Run(() => app.Dispose())))
@@ -48,7 +54,7 @@ namespace Vostok.Hosting.Abstractions.Composite
 
         internal IEnumerable<Type> ApplicationTypes => applications.Select(app => app.GetType());
 
-        private async Task ExecuteSequentially(IVostokHostingEnvironment environment, IEnumerable<Func<IVostokHostingEnvironment, Task>> actions)
+        private async Task ExecuteSequentially(IEnumerable<Func<IVostokHostingEnvironment, Task>> actions)
         {
             foreach (var action in actions)
             {
@@ -58,10 +64,8 @@ namespace Vostok.Hosting.Abstractions.Composite
             }
         }
 
-        private async Task ExecuteInParallel(IVostokHostingEnvironment environment, IEnumerable<Func<IVostokHostingEnvironment, Task>> actions)
+        private async Task ExecuteInParallel(IEnumerable<Func<IVostokHostingEnvironment, Task>> actions)
         {
-            environment = environment.WithAdditionalShutdownToken(out var localShutdown);
-
             var tasks = actions.Select(action => Task.Run(() => action(environment))).ToList();
 
             var errors = new List<Exception>();
