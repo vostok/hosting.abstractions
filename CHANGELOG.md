@@ -1,3 +1,7 @@
+## 0.3.2 (30-09-2020):
+
+Fixed a bug (null environment in CompositeApplication.PreInitializeAsync) introduced in 0.3.1.
+
 ## 0.3.1 (30-09-2020):
 
 CompositeApplication: bugfix (must pass the same env with additional local shutdown token to Initialize and Run methods).
