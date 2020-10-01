@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
@@ -97,7 +98,8 @@ namespace Vostok.Hosting.Abstractions.Composite
             switch (errors.Count)
             {
                 case 0: return;
-                case 1: throw errors.Single();
+                case 1: ExceptionDispatchInfo.Capture(errors.Single()).Throw(); 
+                    break;
                 default: throw new AggregateException(errors);
             }
         }
