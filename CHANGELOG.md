@@ -1,6 +1,6 @@
 ## 0.3.4 (01-10-2020):
 
-CompositeApplication: bugfix (rethrow single apllication crash exception with captured stacktrace).
+CompositeApplication: bugfix (rethrow single application crash exception with captured stacktrace).
 
 ## 0.3.2 (30-09-2020):
 
