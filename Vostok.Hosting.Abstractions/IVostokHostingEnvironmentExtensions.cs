@@ -27,11 +27,15 @@ namespace Vostok.Hosting.Abstractions
             var linkedSource = CancellationTokenSource.CreateLinkedTokenSource(environment.ShutdownToken, token);
             var linkedToken = linkedSource.Token;
 
-            return new EnvironmentWithOverrides(environment)
-            {
-                CustomShutdownToken = linkedToken
-            };
+            return WithReplacedShutdownToken(environment, linkedToken);
         }
+
+        [NotNull]
+        public static IVostokHostingEnvironment WithReplacedShutdownToken([NotNull] this IVostokHostingEnvironment environment, CancellationToken token)
+            => new EnvironmentWithOverrides(environment)
+            {
+                CustomShutdownToken = token
+            };
 
         [NotNull]
         public static IVostokHostingEnvironment CustomizeLog(
