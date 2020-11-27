@@ -26,6 +26,10 @@ namespace Vostok.Hosting.Abstractions.Requirements
         public static IEnumerable<RequiresSecretConfiguration> GetRequiredSecretConfigurations([NotNull] IVostokApplication application)
             => RequirementAttributesHelper.GetAttributes<RequiresSecretConfiguration>(application);
 
+        [ItemNotNull]
+        public static IEnumerable<RequiresMergedConfiguration> GetRequiredMergedConfigurations([NotNull] IVostokApplication application)
+            => RequirementAttributesHelper.GetAttributes<RequiresMergedConfiguration>(application);
+
         [Obsolete("This method was deprecated with addition of CompositeApplication. Please use the overload with IVostokApplication instead.")]
         public static bool RequiresPort([NotNull] Type applicationType)
             => RequirementAttributesHelper.GetAttributes<RequiresPort>(applicationType).Any();

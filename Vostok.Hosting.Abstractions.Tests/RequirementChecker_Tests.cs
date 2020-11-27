@@ -87,6 +87,7 @@ namespace Vostok.Hosting.Abstractions.Tests
         [RequiresPort]
         [RequiresConfiguration(typeof(string))]
         [RequiresSecretConfiguration(typeof(string))]
+        [RequiresMergedConfiguration(typeof(int))]
         [RequiresHostExtension(typeof(Guid))]
         [RequiresHostExtension(typeof(Guid), "key")]
         private class Application : EmptyApplication

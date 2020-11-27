@@ -1,3 +1,7 @@
+## 0.3.5 (27-11-2020):
+
+Added `RequiresMergedConfiguration` attribute.
+
 ## 0.3.4 (01-10-2020):
 
 CompositeApplication: bugfix (rethrow single application crash exception with captured stacktrace).
