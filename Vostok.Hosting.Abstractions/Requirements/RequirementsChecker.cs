@@ -140,6 +140,7 @@ namespace Vostok.Hosting.Abstractions.Requirements
            => CheckConfigurationTypesInternal(
                () => RequirementDetector.GetRequiredConfigurations(applicationType),
                () => RequirementDetector.GetRequiredSecretConfigurations(applicationType),
+               Enumerable.Empty<RequiresMergedConfiguration>,
                environment,
                errors);
 
@@ -147,12 +148,14 @@ namespace Vostok.Hosting.Abstractions.Requirements
             => CheckConfigurationTypesInternal(
                 () => RequirementDetector.GetRequiredConfigurations(application),
                 () => RequirementDetector.GetRequiredSecretConfigurations(application),
+                () => RequirementDetector.GetRequiredMergedConfigurations(application),
                 environment,
                 errors);
 
         private static void CheckConfigurationTypesInternal(
             Func<IEnumerable<RequiresConfiguration>> getRequiredConfigurations,
             Func<IEnumerable<RequiresSecretConfiguration>> getRequiredSecretConfigurations,
+            Func<IEnumerable<RequiresMergedConfiguration>> getRequiredMergedConfigurations,
             IVostokHostingEnvironment environment,
             List<string> errors)
         {
@@ -162,11 +165,17 @@ namespace Vostok.Hosting.Abstractions.Requirements
             var requiredSecretConfigurations = getRequiredSecretConfigurations()
                 .Select(requirement => requirement.Type);
 
+            var requiredMergedConfigurations = getRequiredMergedConfigurations()
+                .Select(requirement => requirement.Type);
+
             foreach (var type in requiredConfigurations)
                 CheckConfigurationType(environment.ConfigurationProvider, type, errors);
 
             foreach (var type in requiredSecretConfigurations)
                 CheckConfigurationType(environment.SecretConfigurationProvider, type, errors);
+
+            foreach (var type in requiredMergedConfigurations)
+                CheckConfigurationType(environment.ConfigurationProvider, type, errors);
         }
 
         private static void CheckConfigurationType(IConfigurationProvider provider, Type type, List<string> errors)
