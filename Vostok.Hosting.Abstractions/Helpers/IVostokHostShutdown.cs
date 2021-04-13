@@ -9,9 +9,6 @@ namespace Vostok.Hosting.Abstractions.Helpers
     [PublicAPI]
     public interface IVostokHostShutdown
     {
-        [NotNull]
-        CancellationTokenSource Source { get; }
-
         bool IsInitiated { get; }
 
         void Initiate();
