@@ -1,3 +1,7 @@
+## 0.3.6 (14-04-2021):
+
+Added `IVostokHostShutdown` interface.
+
 ## 0.3.5 (27-11-2020):
 
 Added `RequiresMergedConfiguration` attribute.
