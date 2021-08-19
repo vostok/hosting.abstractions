@@ -3,7 +3,9 @@ using Vostok.Hosting.Abstractions.Diagnostics;
 
 namespace Vostok.Hosting.Abstractions
 {
-    /// <inheritdoc cref="IVostokHostingEnvironment.Diagnostics"/>
+    /// <summary>
+    /// A set of tools which enables user to track and observe application heath state.
+    /// </summary>
     [PublicAPI]
     public interface IVostokApplicationDiagnostics
     {
@@ -14,7 +16,7 @@ namespace Vostok.Hosting.Abstractions
         IDiagnosticInfo Info { get; }
 
         /// <summary>
-        /// <see cref="IHealthTracker"/> provides a simple health check infrastucture and allows to track internal application health.
+        /// <see cref="IHealthTracker"/> provides a simple health check infrastructure and allows to track internal application health.
         /// </summary>
         [NotNull]
         IHealthTracker HealthTracker { get; }

@@ -35,7 +35,7 @@ namespace Vostok.Hosting.Abstractions.Diagnostics
         public DateTimeOffset Timestamp { get; }
 
         /// <summary>
-        /// Breakdown of recent health check results.
+        /// Breakdown of recent health check results by names.
         /// </summary>
         [NotNull]
         public IReadOnlyDictionary<string, HealthCheckResult> Checks { get; }
