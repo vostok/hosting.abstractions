@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configurations>Debug;Release</Configurations>
     <LangVersion>7.2</LangVersion>
-    <VersionPrefix>0.3.7</VersionPrefix>
+    <VersionPrefix>0.3.8</VersionPrefix>
     <NoWarn>618;1591;0420</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
