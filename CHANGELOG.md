@@ -1,3 +1,7 @@
+## 0.3.7 (06-12-2021):
+
+Added `net6.0` target.
+
 ## 0.3.6 (14-04-2021):
 
 Added `IVostokHostShutdown` interface.
