@@ -52,5 +52,11 @@ namespace Vostok.Hosting.Abstractions.Diagnostics
         /// </summary>
         [ItemNotNull]
         Task<HealthReport> RunChecksAsync(CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Launches periodic health checks that happen in a background.
+        /// Results of these checks are available through <see cref="ObserveReports"/> and <see cref="CurrentReport"/>.
+        /// </summary>
+        void LaunchPeriodicalChecks(CancellationToken cancellationToken);
     }
 }

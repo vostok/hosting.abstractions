@@ -4,7 +4,7 @@ using Vostok.Hosting.Abstractions.Diagnostics;
 namespace Vostok.Hosting.Abstractions
 {
     /// <summary>
-    /// A set of tools which enables user to track and observe application heath state.
+    /// A set of tools which enables user to track and observe application health state.
     /// </summary>
     [PublicAPI]
     public interface IVostokApplicationDiagnostics
