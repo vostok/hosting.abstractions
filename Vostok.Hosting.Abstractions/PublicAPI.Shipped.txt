@@ -1,0 +1,182 @@
+const Vostok.Hosting.Abstractions.WellKnownApplicationIdentityProperties.Application = "application" -> string
+const Vostok.Hosting.Abstractions.WellKnownApplicationIdentityProperties.Environment = "environment" -> string
+const Vostok.Hosting.Abstractions.WellKnownApplicationIdentityProperties.Instance = "instance" -> string
+const Vostok.Hosting.Abstractions.WellKnownApplicationIdentityProperties.Project = "project" -> string
+const Vostok.Hosting.Abstractions.WellKnownApplicationIdentityProperties.Subproject = "subproject" -> string
+override Vostok.Hosting.Abstractions.Diagnostics.DiagnosticEntry.Equals(object obj) -> bool
+override Vostok.Hosting.Abstractions.Diagnostics.DiagnosticEntry.GetHashCode() -> int
+override Vostok.Hosting.Abstractions.Diagnostics.DiagnosticEntry.ToString() -> string
+readonly Vostok.Hosting.Abstractions.Requirements.RequiresConfiguration.Scope -> string[]
+readonly Vostok.Hosting.Abstractions.Requirements.RequiresConfiguration.Type -> System.Type
+readonly Vostok.Hosting.Abstractions.Requirements.RequiresHostExtension.Key -> string
+readonly Vostok.Hosting.Abstractions.Requirements.RequiresHostExtension.Type -> System.Type
+readonly Vostok.Hosting.Abstractions.Requirements.RequiresMergedConfiguration.Scope -> string[]
+readonly Vostok.Hosting.Abstractions.Requirements.RequiresMergedConfiguration.Type -> System.Type
+readonly Vostok.Hosting.Abstractions.Requirements.RequiresSecretConfiguration.Scope -> string[]
+readonly Vostok.Hosting.Abstractions.Requirements.RequiresSecretConfiguration.Type -> System.Type
+static Vostok.Hosting.Abstractions.Composite.ICompositeApplicationBuilderExtensions.AddApplications(this Vostok.Hosting.Abstractions.Composite.ICompositeApplicationBuilder builder, System.Collections.Generic.IEnumerable<Vostok.Hosting.Abstractions.IVostokApplication> applications) -> Vostok.Hosting.Abstractions.Composite.ICompositeApplicationBuilder
+static Vostok.Hosting.Abstractions.Composite.ICompositeApplicationBuilderExtensions.UseParallelExecution(this Vostok.Hosting.Abstractions.Composite.ICompositeApplicationBuilder builder) -> Vostok.Hosting.Abstractions.Composite.ICompositeApplicationBuilder
+static Vostok.Hosting.Abstractions.Composite.ICompositeApplicationBuilderExtensions.UseParallelInitialization(this Vostok.Hosting.Abstractions.Composite.ICompositeApplicationBuilder builder) -> Vostok.Hosting.Abstractions.Composite.ICompositeApplicationBuilder
+static Vostok.Hosting.Abstractions.Composite.ICompositeApplicationBuilderExtensions.UseSequentialExecution(this Vostok.Hosting.Abstractions.Composite.ICompositeApplicationBuilder builder) -> Vostok.Hosting.Abstractions.Composite.ICompositeApplicationBuilder
+static Vostok.Hosting.Abstractions.Composite.ICompositeApplicationBuilderExtensions.UseSequentialInitialization(this Vostok.Hosting.Abstractions.Composite.ICompositeApplicationBuilder builder) -> Vostok.Hosting.Abstractions.Composite.ICompositeApplicationBuilder
+static Vostok.Hosting.Abstractions.Diagnostics.DiagnosticEntry.TryParse(string input, out Vostok.Hosting.Abstractions.Diagnostics.DiagnosticEntry entry) -> bool
+static Vostok.Hosting.Abstractions.Diagnostics.HealthCheckResult.Degraded(string reason) -> Vostok.Hosting.Abstractions.Diagnostics.HealthCheckResult
+static Vostok.Hosting.Abstractions.Diagnostics.HealthCheckResult.Failing(string reason) -> Vostok.Hosting.Abstractions.Diagnostics.HealthCheckResult
+static Vostok.Hosting.Abstractions.Diagnostics.HealthCheckResult.Healthy() -> Vostok.Hosting.Abstractions.Diagnostics.HealthCheckResult
+static Vostok.Hosting.Abstractions.Diagnostics.IDiagnosticInfoProviderExtensions.QuerySafe(this Vostok.Hosting.Abstractions.Diagnostics.IDiagnosticInfoProvider provider) -> object
+static Vostok.Hosting.Abstractions.Diagnostics.IHealthCheckExtensions.CheckSafeAsync(this Vostok.Hosting.Abstractions.Diagnostics.IHealthCheck check, System.Threading.CancellationToken cancellationToken, Vostok.Hosting.Abstractions.Diagnostics.HealthStatus statusOnException = Vostok.Hosting.Abstractions.Diagnostics.HealthStatus.Failing) -> System.Threading.Tasks.Task<Vostok.Hosting.Abstractions.Diagnostics.HealthCheckResult>
+static Vostok.Hosting.Abstractions.IVostokApplicationExtensions.Initialize(this Vostok.Hosting.Abstractions.IVostokApplication application, Vostok.Hosting.Abstractions.IVostokHostingEnvironment environment) -> void
+static Vostok.Hosting.Abstractions.IVostokApplicationExtensions.InitializeAndRun(this Vostok.Hosting.Abstractions.IVostokApplication application, Vostok.Hosting.Abstractions.IVostokHostingEnvironment environment) -> void
+static Vostok.Hosting.Abstractions.IVostokApplicationExtensions.Run(this Vostok.Hosting.Abstractions.IVostokApplication application, Vostok.Hosting.Abstractions.IVostokHostingEnvironment environment) -> void
+static Vostok.Hosting.Abstractions.IVostokHostExtensionsExtensions.AsMutable(this Vostok.Hosting.Abstractions.IVostokHostExtensions extensions) -> Vostok.Hosting.Abstractions.IVostokHostMutableExtensions
+static Vostok.Hosting.Abstractions.IVostokHostingEnvironmentExtensions.CustomizeConfigurationSource(this Vostok.Hosting.Abstractions.IVostokHostingEnvironment environment, System.Func<Vostok.Configuration.Abstractions.IConfigurationSource, Vostok.Configuration.Abstractions.IConfigurationSource> transform) -> Vostok.Hosting.Abstractions.IVostokHostingEnvironment
+static Vostok.Hosting.Abstractions.IVostokHostingEnvironmentExtensions.CustomizeLog(this Vostok.Hosting.Abstractions.IVostokHostingEnvironment environment, System.Func<Vostok.Logging.Abstractions.ILog, Vostok.Logging.Abstractions.ILog> transform) -> Vostok.Hosting.Abstractions.IVostokHostingEnvironment
+static Vostok.Hosting.Abstractions.IVostokHostingEnvironmentExtensions.CustomizeSecretConfigurationSource(this Vostok.Hosting.Abstractions.IVostokHostingEnvironment environment, System.Func<Vostok.Configuration.Abstractions.IConfigurationSource, Vostok.Configuration.Abstractions.IConfigurationSource> transform) -> Vostok.Hosting.Abstractions.IVostokHostingEnvironment
+static Vostok.Hosting.Abstractions.IVostokHostingEnvironmentExtensions.WithAdditionalShutdownToken(this Vostok.Hosting.Abstractions.IVostokHostingEnvironment environment, out System.Threading.CancellationTokenSource source) -> Vostok.Hosting.Abstractions.IVostokHostingEnvironment
+static Vostok.Hosting.Abstractions.IVostokHostingEnvironmentExtensions.WithAdditionalShutdownToken(this Vostok.Hosting.Abstractions.IVostokHostingEnvironment environment, System.Threading.CancellationToken token) -> Vostok.Hosting.Abstractions.IVostokHostingEnvironment
+static Vostok.Hosting.Abstractions.IVostokHostingEnvironmentExtensions.WithReplacedShutdownToken(this Vostok.Hosting.Abstractions.IVostokHostingEnvironment environment, System.Threading.CancellationToken token) -> Vostok.Hosting.Abstractions.IVostokHostingEnvironment
+static Vostok.Hosting.Abstractions.Requirements.RequirementDetector.GetRequiredConfigurations(System.Type applicationType) -> System.Collections.Generic.IEnumerable<Vostok.Hosting.Abstractions.Requirements.RequiresConfiguration>
+static Vostok.Hosting.Abstractions.Requirements.RequirementDetector.GetRequiredConfigurations(Vostok.Hosting.Abstractions.IVostokApplication application) -> System.Collections.Generic.IEnumerable<Vostok.Hosting.Abstractions.Requirements.RequiresConfiguration>
+static Vostok.Hosting.Abstractions.Requirements.RequirementDetector.GetRequiredHostExtensions(System.Type applicationType) -> System.Collections.Generic.IEnumerable<Vostok.Hosting.Abstractions.Requirements.RequiresHostExtension>
+static Vostok.Hosting.Abstractions.Requirements.RequirementDetector.GetRequiredHostExtensions(Vostok.Hosting.Abstractions.IVostokApplication application) -> System.Collections.Generic.IEnumerable<Vostok.Hosting.Abstractions.Requirements.RequiresHostExtension>
+static Vostok.Hosting.Abstractions.Requirements.RequirementDetector.GetRequiredMergedConfigurations(Vostok.Hosting.Abstractions.IVostokApplication application) -> System.Collections.Generic.IEnumerable<Vostok.Hosting.Abstractions.Requirements.RequiresMergedConfiguration>
+static Vostok.Hosting.Abstractions.Requirements.RequirementDetector.GetRequiredSecretConfigurations(System.Type applicationType) -> System.Collections.Generic.IEnumerable<Vostok.Hosting.Abstractions.Requirements.RequiresSecretConfiguration>
+static Vostok.Hosting.Abstractions.Requirements.RequirementDetector.GetRequiredSecretConfigurations(Vostok.Hosting.Abstractions.IVostokApplication application) -> System.Collections.Generic.IEnumerable<Vostok.Hosting.Abstractions.Requirements.RequiresSecretConfiguration>
+static Vostok.Hosting.Abstractions.Requirements.RequirementDetector.RequiresPort(System.Type applicationType) -> bool
+static Vostok.Hosting.Abstractions.Requirements.RequirementDetector.RequiresPort(Vostok.Hosting.Abstractions.IVostokApplication application) -> bool
+static Vostok.Hosting.Abstractions.Requirements.RequirementsChecker.Check(System.Type applicationType, Vostok.Hosting.Abstractions.IVostokHostingEnvironment environment) -> void
+static Vostok.Hosting.Abstractions.Requirements.RequirementsChecker.Check(Vostok.Hosting.Abstractions.IVostokApplication application, Vostok.Hosting.Abstractions.IVostokHostingEnvironment environment) -> void
+static Vostok.Hosting.Abstractions.Requirements.RequirementsChecker.TryCheck(System.Type applicationType, Vostok.Hosting.Abstractions.IVostokHostingEnvironment environment, out System.Collections.Generic.List<string> errors) -> bool
+static Vostok.Hosting.Abstractions.Requirements.RequirementsChecker.TryCheck(Vostok.Hosting.Abstractions.IVostokApplication application, Vostok.Hosting.Abstractions.IVostokHostingEnvironment environment, out System.Collections.Generic.List<string> errors) -> bool
+virtual Vostok.Hosting.Abstractions.Composite.CompositeApplication.Dispose() -> void
+virtual Vostok.Hosting.Abstractions.Composite.CompositeApplication.PreInitializeAsync(Vostok.Hosting.Abstractions.IVostokHostingEnvironment externalEnvironment) -> System.Threading.Tasks.Task
+Vostok.Hosting.Abstractions.Composite.CompositeApplication
+Vostok.Hosting.Abstractions.Composite.CompositeApplication.CompositeApplication(System.Action<Vostok.Hosting.Abstractions.Composite.ICompositeApplicationBuilder> configure) -> void
+Vostok.Hosting.Abstractions.Composite.CompositeApplication.InitializeAsync(Vostok.Hosting.Abstractions.IVostokHostingEnvironment externalEnvironment) -> System.Threading.Tasks.Task
+Vostok.Hosting.Abstractions.Composite.CompositeApplication.RunAsync(Vostok.Hosting.Abstractions.IVostokHostingEnvironment vostok) -> System.Threading.Tasks.Task
+Vostok.Hosting.Abstractions.Composite.CompositeApplicationSettings
+Vostok.Hosting.Abstractions.Composite.CompositeApplicationSettings.CompositeApplicationSettings() -> void
+Vostok.Hosting.Abstractions.Composite.CompositeApplicationSettings.UseParallelExecution.get -> bool
+Vostok.Hosting.Abstractions.Composite.CompositeApplicationSettings.UseParallelExecution.set -> void
+Vostok.Hosting.Abstractions.Composite.CompositeApplicationSettings.UseParallelInitialization.get -> bool
+Vostok.Hosting.Abstractions.Composite.CompositeApplicationSettings.UseParallelInitialization.set -> void
+Vostok.Hosting.Abstractions.Composite.ICompositeApplicationBuilder
+Vostok.Hosting.Abstractions.Composite.ICompositeApplicationBuilder.AddApplication(Vostok.Hosting.Abstractions.IVostokApplication application) -> Vostok.Hosting.Abstractions.Composite.ICompositeApplicationBuilder
+Vostok.Hosting.Abstractions.Composite.ICompositeApplicationBuilder.CustomizeSettings(System.Action<Vostok.Hosting.Abstractions.Composite.CompositeApplicationSettings> customization) -> Vostok.Hosting.Abstractions.Composite.ICompositeApplicationBuilder
+Vostok.Hosting.Abstractions.Composite.ICompositeApplicationBuilderExtensions
+Vostok.Hosting.Abstractions.Diagnostics.DiagnosticEntry
+Vostok.Hosting.Abstractions.Diagnostics.DiagnosticEntry.Component.get -> string
+Vostok.Hosting.Abstractions.Diagnostics.DiagnosticEntry.DiagnosticEntry(string component, string name) -> void
+Vostok.Hosting.Abstractions.Diagnostics.DiagnosticEntry.Equals(Vostok.Hosting.Abstractions.Diagnostics.DiagnosticEntry other) -> bool
+Vostok.Hosting.Abstractions.Diagnostics.DiagnosticEntry.Name.get -> string
+Vostok.Hosting.Abstractions.Diagnostics.HealthCheckResult
+Vostok.Hosting.Abstractions.Diagnostics.HealthCheckResult.HealthCheckResult(Vostok.Hosting.Abstractions.Diagnostics.HealthStatus status, string reason) -> void
+Vostok.Hosting.Abstractions.Diagnostics.HealthCheckResult.Reason.get -> string
+Vostok.Hosting.Abstractions.Diagnostics.HealthCheckResult.Status.get -> Vostok.Hosting.Abstractions.Diagnostics.HealthStatus
+Vostok.Hosting.Abstractions.Diagnostics.HealthReport
+Vostok.Hosting.Abstractions.Diagnostics.HealthReport.Checks.get -> System.Collections.Generic.IReadOnlyDictionary<string, Vostok.Hosting.Abstractions.Diagnostics.HealthCheckResult>
+Vostok.Hosting.Abstractions.Diagnostics.HealthReport.Duration.get -> System.TimeSpan
+Vostok.Hosting.Abstractions.Diagnostics.HealthReport.HealthReport(Vostok.Hosting.Abstractions.Diagnostics.HealthStatus status, System.TimeSpan duration, System.DateTimeOffset timestamp, System.Collections.Generic.IReadOnlyDictionary<string, Vostok.Hosting.Abstractions.Diagnostics.HealthCheckResult> checks) -> void
+Vostok.Hosting.Abstractions.Diagnostics.HealthReport.Problems.get -> System.Collections.Generic.IEnumerable<string>
+Vostok.Hosting.Abstractions.Diagnostics.HealthReport.Status.get -> Vostok.Hosting.Abstractions.Diagnostics.HealthStatus
+Vostok.Hosting.Abstractions.Diagnostics.HealthReport.Timestamp.get -> System.DateTimeOffset
+Vostok.Hosting.Abstractions.Diagnostics.HealthStatus
+Vostok.Hosting.Abstractions.Diagnostics.HealthStatus.Degraded = 1 -> Vostok.Hosting.Abstractions.Diagnostics.HealthStatus
+Vostok.Hosting.Abstractions.Diagnostics.HealthStatus.Failing = 2 -> Vostok.Hosting.Abstractions.Diagnostics.HealthStatus
+Vostok.Hosting.Abstractions.Diagnostics.HealthStatus.Healthy = 0 -> Vostok.Hosting.Abstractions.Diagnostics.HealthStatus
+Vostok.Hosting.Abstractions.Diagnostics.IDiagnosticInfo
+Vostok.Hosting.Abstractions.Diagnostics.IDiagnosticInfo.ListAll() -> System.Collections.Generic.IReadOnlyList<Vostok.Hosting.Abstractions.Diagnostics.DiagnosticEntry>
+Vostok.Hosting.Abstractions.Diagnostics.IDiagnosticInfo.RegisterProvider(Vostok.Hosting.Abstractions.Diagnostics.DiagnosticEntry entry, Vostok.Hosting.Abstractions.Diagnostics.IDiagnosticInfoProvider provider) -> System.IDisposable
+Vostok.Hosting.Abstractions.Diagnostics.IDiagnosticInfo.TryQuery(Vostok.Hosting.Abstractions.Diagnostics.DiagnosticEntry entry, out object info) -> bool
+Vostok.Hosting.Abstractions.Diagnostics.IDiagnosticInfoProvider
+Vostok.Hosting.Abstractions.Diagnostics.IDiagnosticInfoProvider.Query() -> object
+Vostok.Hosting.Abstractions.Diagnostics.IDiagnosticInfoProviderExtensions
+Vostok.Hosting.Abstractions.Diagnostics.IHealthCheck
+Vostok.Hosting.Abstractions.Diagnostics.IHealthCheck.CheckAsync(System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<Vostok.Hosting.Abstractions.Diagnostics.HealthCheckResult>
+Vostok.Hosting.Abstractions.Diagnostics.IHealthCheckExtensions
+Vostok.Hosting.Abstractions.Diagnostics.IHealthTracker
+Vostok.Hosting.Abstractions.Diagnostics.IHealthTracker.CurrentReport.get -> Vostok.Hosting.Abstractions.Diagnostics.HealthReport
+Vostok.Hosting.Abstractions.Diagnostics.IHealthTracker.CurrentStatus.get -> Vostok.Hosting.Abstractions.Diagnostics.HealthStatus
+Vostok.Hosting.Abstractions.Diagnostics.IHealthTracker.ObserveReports() -> System.IObservable<Vostok.Hosting.Abstractions.Diagnostics.HealthReport>
+Vostok.Hosting.Abstractions.Diagnostics.IHealthTracker.ObserveStatus() -> System.IObservable<Vostok.Hosting.Abstractions.Diagnostics.HealthStatus>
+Vostok.Hosting.Abstractions.Diagnostics.IHealthTracker.ObserveStatusChanges() -> System.IObservable<(Vostok.Hosting.Abstractions.Diagnostics.HealthStatus previous, Vostok.Hosting.Abstractions.Diagnostics.HealthStatus current)>
+Vostok.Hosting.Abstractions.Diagnostics.IHealthTracker.RegisterCheck(string name, Vostok.Hosting.Abstractions.Diagnostics.IHealthCheck check) -> System.IDisposable
+Vostok.Hosting.Abstractions.Diagnostics.IHealthTracker.RunChecksAsync(System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<Vostok.Hosting.Abstractions.Diagnostics.HealthReport>
+Vostok.Hosting.Abstractions.Helpers.IVostokHostShutdown
+Vostok.Hosting.Abstractions.Helpers.IVostokHostShutdown.Initiate() -> void
+Vostok.Hosting.Abstractions.Helpers.IVostokHostShutdown.IsInitiated.get -> bool
+Vostok.Hosting.Abstractions.IVostokApplication
+Vostok.Hosting.Abstractions.IVostokApplication.InitializeAsync(Vostok.Hosting.Abstractions.IVostokHostingEnvironment environment) -> System.Threading.Tasks.Task
+Vostok.Hosting.Abstractions.IVostokApplication.RunAsync(Vostok.Hosting.Abstractions.IVostokHostingEnvironment environment) -> System.Threading.Tasks.Task
+Vostok.Hosting.Abstractions.IVostokApplicationDiagnostics
+Vostok.Hosting.Abstractions.IVostokApplicationDiagnostics.HealthTracker.get -> Vostok.Hosting.Abstractions.Diagnostics.IHealthTracker
+Vostok.Hosting.Abstractions.IVostokApplicationDiagnostics.Info.get -> Vostok.Hosting.Abstractions.Diagnostics.IDiagnosticInfo
+Vostok.Hosting.Abstractions.IVostokApplicationExtensions
+Vostok.Hosting.Abstractions.IVostokApplicationIdentity
+Vostok.Hosting.Abstractions.IVostokApplicationIdentity.Application.get -> string
+Vostok.Hosting.Abstractions.IVostokApplicationIdentity.Environment.get -> string
+Vostok.Hosting.Abstractions.IVostokApplicationIdentity.Instance.get -> string
+Vostok.Hosting.Abstractions.IVostokApplicationIdentity.Project.get -> string
+Vostok.Hosting.Abstractions.IVostokApplicationIdentity.Subproject.get -> string
+Vostok.Hosting.Abstractions.IVostokApplicationLimits
+Vostok.Hosting.Abstractions.IVostokApplicationLimits.CpuUnits.get -> float?
+Vostok.Hosting.Abstractions.IVostokApplicationLimits.MemoryBytes.get -> long?
+Vostok.Hosting.Abstractions.IVostokApplicationMetrics
+Vostok.Hosting.Abstractions.IVostokApplicationMetrics.Application.get -> Vostok.Metrics.IMetricContext
+Vostok.Hosting.Abstractions.IVostokApplicationMetrics.Environment.get -> Vostok.Metrics.IMetricContext
+Vostok.Hosting.Abstractions.IVostokApplicationMetrics.Instance.get -> Vostok.Metrics.IMetricContext
+Vostok.Hosting.Abstractions.IVostokApplicationMetrics.Project.get -> Vostok.Metrics.IMetricContext
+Vostok.Hosting.Abstractions.IVostokApplicationMetrics.Root.get -> Vostok.Metrics.IMetricContext
+Vostok.Hosting.Abstractions.IVostokApplicationMetrics.Subproject.get -> Vostok.Metrics.IMetricContext
+Vostok.Hosting.Abstractions.IVostokApplicationReplicationInfo
+Vostok.Hosting.Abstractions.IVostokApplicationReplicationInfo.InstanceIndex.get -> int
+Vostok.Hosting.Abstractions.IVostokApplicationReplicationInfo.InstancesCount.get -> int
+Vostok.Hosting.Abstractions.IVostokHostExtensions
+Vostok.Hosting.Abstractions.IVostokHostExtensions.Get<TExtension>() -> TExtension
+Vostok.Hosting.Abstractions.IVostokHostExtensions.Get<TExtension>(string key) -> TExtension
+Vostok.Hosting.Abstractions.IVostokHostExtensions.GetAll() -> System.Collections.Generic.IEnumerable<(System.Type, object)>
+Vostok.Hosting.Abstractions.IVostokHostExtensions.TryGet<TExtension>(out TExtension result) -> bool
+Vostok.Hosting.Abstractions.IVostokHostExtensions.TryGet<TExtension>(string key, out TExtension result) -> bool
+Vostok.Hosting.Abstractions.IVostokHostExtensionsExtensions
+Vostok.Hosting.Abstractions.IVostokHostingEnvironment
+Vostok.Hosting.Abstractions.IVostokHostingEnvironment.ApplicationIdentity.get -> Vostok.Hosting.Abstractions.IVostokApplicationIdentity
+Vostok.Hosting.Abstractions.IVostokHostingEnvironment.ApplicationLimits.get -> Vostok.Hosting.Abstractions.IVostokApplicationLimits
+Vostok.Hosting.Abstractions.IVostokHostingEnvironment.ApplicationReplicationInfo.get -> Vostok.Hosting.Abstractions.IVostokApplicationReplicationInfo
+Vostok.Hosting.Abstractions.IVostokHostingEnvironment.ClusterConfigClient.get -> Vostok.ClusterConfig.Client.Abstractions.IClusterConfigClient
+Vostok.Hosting.Abstractions.IVostokHostingEnvironment.ConfigurationProvider.get -> Vostok.Configuration.Abstractions.IConfigurationProvider
+Vostok.Hosting.Abstractions.IVostokHostingEnvironment.ConfigurationSource.get -> Vostok.Configuration.Abstractions.IConfigurationSource
+Vostok.Hosting.Abstractions.IVostokHostingEnvironment.ContextConfiguration.get -> Vostok.Context.IContextConfiguration
+Vostok.Hosting.Abstractions.IVostokHostingEnvironment.ContextGlobals.get -> Vostok.Context.IContextGlobals
+Vostok.Hosting.Abstractions.IVostokHostingEnvironment.ContextProperties.get -> Vostok.Context.IContextProperties
+Vostok.Hosting.Abstractions.IVostokHostingEnvironment.Datacenters.get -> Vostok.Datacenters.IDatacenters
+Vostok.Hosting.Abstractions.IVostokHostingEnvironment.HerculesSink.get -> Vostok.Hercules.Client.Abstractions.IHerculesSink
+Vostok.Hosting.Abstractions.IVostokHostingEnvironment.HostExtensions.get -> Vostok.Hosting.Abstractions.IVostokHostExtensions
+Vostok.Hosting.Abstractions.IVostokHostingEnvironment.Log.get -> Vostok.Logging.Abstractions.ILog
+Vostok.Hosting.Abstractions.IVostokHostingEnvironment.Metrics.get -> Vostok.Hosting.Abstractions.IVostokApplicationMetrics
+Vostok.Hosting.Abstractions.IVostokHostingEnvironment.Port.get -> int?
+Vostok.Hosting.Abstractions.IVostokHostingEnvironment.SecretConfigurationProvider.get -> Vostok.Configuration.Abstractions.IConfigurationProvider
+Vostok.Hosting.Abstractions.IVostokHostingEnvironment.SecretConfigurationSource.get -> Vostok.Configuration.Abstractions.IConfigurationSource
+Vostok.Hosting.Abstractions.IVostokHostingEnvironment.ServiceBeacon.get -> Vostok.ServiceDiscovery.Abstractions.IServiceBeacon
+Vostok.Hosting.Abstractions.IVostokHostingEnvironment.ServiceLocator.get -> Vostok.ServiceDiscovery.Abstractions.IServiceLocator
+Vostok.Hosting.Abstractions.IVostokHostingEnvironment.ShutdownTimeout.get -> System.TimeSpan
+Vostok.Hosting.Abstractions.IVostokHostingEnvironment.ShutdownToken.get -> System.Threading.CancellationToken
+Vostok.Hosting.Abstractions.IVostokHostingEnvironment.Tracer.get -> Vostok.Tracing.Abstractions.ITracer
+Vostok.Hosting.Abstractions.IVostokHostingEnvironmentExtensions
+Vostok.Hosting.Abstractions.IVostokHostMutableExtensions
+Vostok.Hosting.Abstractions.IVostokHostMutableExtensions.Add<TExtension>(string key, TExtension extension) -> void
+Vostok.Hosting.Abstractions.IVostokHostMutableExtensions.Add<TExtension>(TExtension extension) -> void
+Vostok.Hosting.Abstractions.Requirements.RequirementDetector
+Vostok.Hosting.Abstractions.Requirements.RequirementsChecker
+Vostok.Hosting.Abstractions.Requirements.RequirementsCheckException
+Vostok.Hosting.Abstractions.Requirements.RequirementsCheckException.RequirementsCheckException(System.Type applicationType, System.Collections.Generic.IReadOnlyList<string> errors) -> void
+Vostok.Hosting.Abstractions.Requirements.RequiresConfiguration
+Vostok.Hosting.Abstractions.Requirements.RequiresConfiguration.RequiresConfiguration(System.Type type, params string[] scope) -> void
+Vostok.Hosting.Abstractions.Requirements.RequiresHostExtension
+Vostok.Hosting.Abstractions.Requirements.RequiresHostExtension.RequiresHostExtension(System.Type type, string key = null) -> void
+Vostok.Hosting.Abstractions.Requirements.RequiresMergedConfiguration
+Vostok.Hosting.Abstractions.Requirements.RequiresMergedConfiguration.RequiresMergedConfiguration(System.Type type, params string[] scope) -> void
+Vostok.Hosting.Abstractions.Requirements.RequiresPort
+Vostok.Hosting.Abstractions.Requirements.RequiresPort.RequiresPort() -> void
+Vostok.Hosting.Abstractions.Requirements.RequiresSecretConfiguration
+Vostok.Hosting.Abstractions.Requirements.RequiresSecretConfiguration.RequiresSecretConfiguration(System.Type type, params string[] scope) -> void
+Vostok.Hosting.Abstractions.WellKnownApplicationIdentityProperties
