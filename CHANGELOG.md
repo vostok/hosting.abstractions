@@ -1,3 +1,7 @@
+## 0.3.9 (04-10-2022):
+
+Added `.GetAll(bool, bool)` method to `IVostokHostExtensions`
+
 ## 0.3.8 (06-12-2021):
 
 Added `net6.0` target.
