@@ -180,3 +180,4 @@ Vostok.Hosting.Abstractions.Requirements.RequiresPort.RequiresPort() -> void
 Vostok.Hosting.Abstractions.Requirements.RequiresSecretConfiguration
 Vostok.Hosting.Abstractions.Requirements.RequiresSecretConfiguration.RequiresSecretConfiguration(System.Type type, params string[] scope) -> void
 Vostok.Hosting.Abstractions.WellKnownApplicationIdentityProperties
+Vostok.Hosting.Abstractions.IVostokHostExtensions.GetAll(bool withoutKeys, bool withKeys) -> System.Collections.Generic.IEnumerable<(System.Type Type, object Extension, string Key)>
