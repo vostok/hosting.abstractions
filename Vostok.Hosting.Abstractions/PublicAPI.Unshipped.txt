@@ -1,1 +1,1 @@
-
+Vostok.Hosting.Abstractions.IVostokHostExtensions.GetAllKeyed() -> System.Collections.Generic.IEnumerable<(string, System.Type, object)>
