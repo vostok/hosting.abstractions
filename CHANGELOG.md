@@ -1,6 +1,6 @@
 ## 0.3.9 (04-10-2022):
 
-Added `.GetAllKeyed()` method to `IVostokHostExtensions`
+Added interface `IVostokHostExtensionsForKeyed`
 
 ## 0.3.8 (06-12-2021):
 

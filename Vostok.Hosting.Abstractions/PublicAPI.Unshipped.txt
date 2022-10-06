@@ -1,1 +1,4 @@
-Vostok.Hosting.Abstractions.IVostokHostExtensions.GetAllKeyed() -> System.Collections.Generic.IEnumerable<(string, System.Type, object)>
+static Vostok.Hosting.Abstractions.IVostokHostExtensionsExtensions.AsForKeyed(this Vostok.Hosting.Abstractions.IVostokHostExtensions extensions) -> Vostok.Hosting.Abstractions.IVostokHostExtensionsForKeyed
+static Vostok.Hosting.Abstractions.IVostokHostExtensionsExtensions.TryAsForKeyed(this Vostok.Hosting.Abstractions.IVostokHostExtensions extensions, out Vostok.Hosting.Abstractions.IVostokHostExtensionsForKeyed forKeyed) -> bool
+Vostok.Hosting.Abstractions.IVostokHostExtensionsForKeyed
+Vostok.Hosting.Abstractions.IVostokHostExtensionsForKeyed.GetAllKeyed() -> System.Collections.Generic.IEnumerable<(string, System.Type, object)>
