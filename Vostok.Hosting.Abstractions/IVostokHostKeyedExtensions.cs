@@ -6,7 +6,7 @@ namespace Vostok.Hosting.Abstractions
 {
     /// <inheritdoc cref="IVostokHostingEnvironment.HostExtensions"/>
     [PublicAPI]
-    public interface IVostokHostExtensionsForKeyed : IVostokHostExtensions
+    public interface IVostokHostKeyedExtensions : IVostokHostExtensions
     {
         /// <summary>
         /// Returns all types registered with key.
