@@ -36,10 +36,10 @@ namespace Vostok.Hosting.Abstractions
         /// Returns all types registered without key.
         /// </summary>
         IEnumerable<(Type, object)> GetAll();
-        
+
         /// <summary>
-        /// Returns all types registered.
+        /// Returns all types registered with key.
         /// </summary>
-        IEnumerable<(Type Type, object Extension, string Key)> GetAll(bool withoutKeys, bool withKeys);
+        IEnumerable<(string, Type, object)> GetAllKeyed();
     }
 }

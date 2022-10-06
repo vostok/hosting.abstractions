@@ -128,18 +128,8 @@ namespace Vostok.Hosting.Abstractions.Tests
             public IEnumerable<(Type, object)> GetAll() 
                 => items.Select(pair => (pair.Key, pair.Value));
 
-            public IEnumerable<(Type Type, object Extension, string Key)> GetAll(bool withoutKeys, bool withKeys)
-            {
-                var result = Enumerable.Empty<(Type, object, string)>();
-
-                if (withoutKeys)
-                    result = result.Concat(items.Select(pair => (pair.Key, pair.Value, default(string))));
-
-                if (withKeys)
-                    result = result.Concat(keyedItems.Select(pair => (pair.Key.Item1, pair.Value, pair.Key.Item2)));
-
-                return result;
-            }
+            public IEnumerable<(string, Type, object)> GetAllKeyed()
+                => keyedItems.Select(pair => (pair.Key.Item2, pair.Key.Item1, pair.Value));
         }
     }
 }
