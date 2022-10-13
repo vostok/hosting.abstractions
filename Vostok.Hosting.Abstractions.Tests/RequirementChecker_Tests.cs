@@ -127,6 +127,9 @@ namespace Vostok.Hosting.Abstractions.Tests
 
             public IEnumerable<(Type, object)> GetAll() 
                 => items.Select(pair => (pair.Key, pair.Value));
+
+            public IEnumerable<(string, Type, object)> GetAllKeyed()
+                => keyedItems.Select(pair => (pair.Key.Item2, pair.Key.Item1, pair.Value));
         }
     }
 }
