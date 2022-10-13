@@ -1,3 +1,0 @@
-static Vostok.Hosting.Abstractions.IVostokHostExtensionsExtensions.AsKeyed(this Vostok.Hosting.Abstractions.IVostokHostExtensions extensions) -> Vostok.Hosting.Abstractions.IVostokHostKeyedExtensions
-Vostok.Hosting.Abstractions.IVostokHostKeyedExtensions
-Vostok.Hosting.Abstractions.IVostokHostKeyedExtensions.GetAllKeyed() -> System.Collections.Generic.IEnumerable<(string, System.Type, object)>
