@@ -1,3 +1,7 @@
+## 0.3.10 (13-12-2024): 
+
+Bump NuGet deps versions
+
 ## 0.3.9 (04-10-2022):
 
 Added interface `IVostokHostExtensionsForKeyed`
