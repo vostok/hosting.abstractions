@@ -30,10 +30,6 @@ notests *default:
     - vostok.tracing.abstractions
 
 full-build > notests:
-  deps:
-    - -vostok.devtools
-    - vostok.devtools@with-net6.0
-
   build:
     target: Vostok.Hosting.Abstractions.sln
     configuration: Release
