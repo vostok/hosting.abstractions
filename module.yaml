@@ -16,6 +16,46 @@ notests *default:
     - module vostok.metrics
     - module vostok.servicediscovery.abstractions
     - module vostok.tracing.abstractions
+    - groups:
+        - target-framework: "netstandard2.0"
+          libraries:
+            - Vostok.Hosting.Abstractions/bin/Release/netstandard2.0/Vostok.Hosting.Abstractions.dll
+          modules:
+            - name: vostok.clusterconfig.client.abstractions
+            - name: vostok.configuration.abstractions
+            - name: vostok.context
+            - name: vostok.datacenters
+            - name: vostok.hercules.client.abstractions
+            - name: vostok.logging.abstractions
+            - name: vostok.metrics
+            - name: vostok.servicediscovery.abstractions
+            - name: vostok.tracing.abstractions
+        - target-framework: "net6.0"
+          libraries:
+            - Vostok.Hosting.Abstractions/bin/Release/net6.0/Vostok.Hosting.Abstractions.dll
+          modules:
+            - name: vostok.clusterconfig.client.abstractions
+            - name: vostok.configuration.abstractions
+            - name: vostok.context
+            - name: vostok.datacenters
+            - name: vostok.hercules.client.abstractions
+            - name: vostok.logging.abstractions
+            - name: vostok.metrics
+            - name: vostok.servicediscovery.abstractions
+            - name: vostok.tracing.abstractions
+        - target-framework: "net8.0"
+          libraries:
+            - Vostok.Hosting.Abstractions/bin/Release/net8.0/Vostok.Hosting.Abstractions.dll
+          modules:
+            - name: vostok.clusterconfig.client.abstractions
+            - name: vostok.configuration.abstractions
+            - name: vostok.context
+            - name: vostok.datacenters
+            - name: vostok.hercules.client.abstractions
+            - name: vostok.logging.abstractions
+            - name: vostok.metrics
+            - name: vostok.servicediscovery.abstractions
+            - name: vostok.tracing.abstractions
 
   deps:
     - vostok.clusterconfig.client.abstractions
